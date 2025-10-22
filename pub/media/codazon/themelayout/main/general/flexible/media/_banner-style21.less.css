@@ -1,0 +1,46 @@
+ 
+.banner-style21{
+	.cdz-banner > a{
+		position: relative;
+		&:before{
+			.abs-transition();
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #232323;
+			overflow: hidden;
+			opacity: 0;
+			z-index: 1;
+		}
+	}
+    .item-content {
+        position: absolute;
+		z-index: 1;
+        bottom: 20px;
+        left: 10px;
+		right:10px;
+		text-align: center;
+        div > * {
+            transition-delay: 0.25s;
+        }
+        .bc-btn{
+            font:  @f_h3;
+            color: @btn_primary_text;
+            background-color: @btn_primary_background;
+            text-align: center;
+            padding: 15px 20px;
+            display: block;
+			text-transform: uppercase;
+            display: inline-block;
+        }
+    }
+    .cdz-banner:hover{
+		> a:before{
+			opacity: .4;
+		}
+    }
+
+}

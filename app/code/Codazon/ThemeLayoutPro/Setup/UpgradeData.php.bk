@@ -1,0 +1,39 @@
+<?php
+/**
+ * Copyright © 2018 Codazon, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+namespace Codazon\ThemeLayoutPro\Setup;
+
+use Magento\Framework\Setup\UpgradeDataInterface;
+use Magento\Framework\Setup\ModuleContextInterface;
+use Magento\Framework\Setup\ModuleDataUpgradeInterface;
+
+class UpgradeData implements UpgradeDataInterface {
+    
+    private $mainContentSetupFactory;
+    
+    protected $objectManager;
+
+    public function __construct(
+        \Codazon\ThemeLayoutPro\Setup\MainContentSetupFactory $mainContentSetupFactory
+    ) {
+        $this->mainContentSetupFactory = $mainContentSetupFactory;
+        $this->objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    }
+    
+    
+    public function install(ModuleDataUpgradeInterface $setup, ModuleContextInterface $context) {
+        $setup->startSetup();
+        $mainContentEntity = \Codazon\ThemeLayoutPro\Model\MainContent::ENTITY;
+        $mainContentSetup = $this->mainContentSetupFactory->create(['setup' => $setup]);
+        $mainContentSetup->installEntities();
+        
+        $mainContentSetup->addAttribute(
+            $mainContentEntity, 'themelayout_content_html', ['type' => 'text']
+        );
+        $setup->endSetup();
+    }
+    
+}

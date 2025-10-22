@@ -1,0 +1,150 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ */
+?>
+
+<?php
+$helper = $this->helper('Codazon\ThemeLayoutPro\Helper\Data');
+$navDir = $helper->getConfig('pages/product_view/moreview_style')?:$block->getVar("gallery/navdir");
+$thumbWidth = $helper->getConfig('images/product/product_moreview_image_width')?:$block->getImageAttribute('product_page_image_small', 'width');
+$thumbHeight = $helper->getConfig('images/product/product_moreview_image_height')?:$block->getImageAttribute('product_page_image_small', 'height');
+$width = (float)$helper->getConfig('images/product/product_base_image_width')?:$block->getImageAttribute('product_page_image_medium', 'width');
+$height = (float)$helper->getConfig('images/product/product_base_image_height')?:$block->getImageAttribute('product_page_image_medium', 'height');
+$manifier = $block->getVar('magnifier');
+$enableManifier = (bool)$helper->getConfig('pages/product_view/enable_zoom_lens');
+$innerZoomScript = false;
+if ($enableManifier) {
+    $innerZoom = (bool)$helper->getConfig('pages/product_view/inner_zoom');
+    if ($innerZoom) {
+        $manifier['enabled'] = false;
+        $innerZoomScript = [
+            'themewidgets' => [
+                'codazon.innerZoom' => [
+                    'width'     => (float)$helper->getConfig('pages/product_view/lens_width'),
+                    'height'    => (float)$helper->getConfig('pages/product_view/lens_height'),
+                    'zoomRatio' => (float)$helper->getConfig('pages/product_view/inner_zoom_ratio'),
+                ]
+            ]
+        ];
+        $innerZoomScript = json_encode($innerZoomScript);
+    } else {
+        $manifier['enabled'] = $enableManifier;
+        $manifier['width'] = (float)$helper->getConfig('pages/product_view/lens_width');
+        $manifier['height'] = (float)$helper->getConfig('pages/product_view/lens_height');
+        $manifier['top'] = '0';
+        $manifier['mode'] = 'outside';
+        $meidaSide = $block->getData('media_side') ? : 'left';
+        $rtl = (bool)$helper->getConfig('themelayoutpro/general/enable_rtl');
+        if ($meidaSide == 'right') {
+            $manifier['left'] = (!$rtl) ? ((string)-$manifier['width']) : '100%';
+        } else {
+            $manifier['left'] = (!$rtl) ? '100%' : (string)-$manifier['width'];
+        }
+    }
+} else {
+    $manifier['enabled'] = false;
+}
+$manifier['fullscreenzoom'] = (int)$helper->getConfig('pages/product_view/fullscreenzoom') ? : $manifier['fullscreenzoom'];
+$showCaption = (int)$helper->getConfig('pages/product_view/show_caption');
+$labelHelper = $this->helper('Codazon\ProductLabel\Helper\Data');
+$showLabel = (bool)$helper->getConfig('pages/product_view/display_product_labels');
+$showOnRight = (bool)$helper->getConfig('pages/product_view/display_labels_on_right');
+$_product = $this->getProduct();
+$labelClass = $showOnRight ? 'right' : 'left';
+$labelStyle = ((!$showOnRight) && ($navDir == 'vertical'))? "style=\"left: {$thumbWidth}px\"":'';
+
+$images = $block->getGalleryImages()->getItems();
+$mainImage = current(array_filter($images, function ($img) use ($block) {
+    return $block->isMainImage($img);
+}));
+if (!empty($images) && empty($mainImage)) {
+    $mainImage = $block->getGalleryImages()->getFirstItem();
+}
+$mainImageData = $mainImage ? $mainImage->getData('medium_image_url') : $this->helper('Magento\Catalog\Helper\Image')->getDefaultPlaceholderUrl('image');
+?>
+<div class="gallery-container">
+    <?php if ($showLabel) : ?>
+    <div class="<?= $labelClass ?> label-wrap <?= $navDir ?>" data-role="label-wrap" <?= $labelStyle ?>>
+        <?= $showLabel?$labelHelper->showLabel($_product):''; ?>
+    </div>
+    <?php endif ?>
+    <div class="gallery-placeholder _block-content-loading" data-gallery-role="gallery-placeholder" <?= $innerZoomScript ? "data-mage-init='{$innerZoomScript}'" : '' ?>>
+        <img
+            alt="main product photo"
+            class="gallery-placeholder__image"
+            src="<?= $mainImageData ?>"
+        />
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "[data-gallery-role=gallery-placeholder]": {
+            "mage/gallery/gallery": {
+                "mixins":["magnifier/magnify"],
+                "magnifierOpts": <?= json_encode($manifier); ?>,
+                "data": <?= $block->getGalleryImagesJson(); ?>,
+                "options": {
+                    "nav": "<?= $block->getVar("gallery/nav"); ?>",
+                    <?php if (($block->getVar("gallery/loop"))): ?>
+                        "loop": <?= $block->getVar("gallery/loop"); ?>,
+                    <?php endif; ?>
+                    <?php if (($block->getVar("gallery/keyboard"))): ?>
+                        "keyboard": <?= $block->getVar("gallery/keyboard"); ?>,
+                    <?php endif; ?>
+                    <?php if (($block->getVar("gallery/arrows"))): ?>
+                        "arrows": <?= $block->getVar("gallery/arrows"); ?>,
+                    <?php endif; ?>
+                    <?php if (($block->getVar("gallery/allowfullscreen"))): ?>
+                        "allowfullscreen": <?= $block->getVar("gallery/allowfullscreen"); ?>,
+                    <?php endif; ?>
+                    "showCaption": <?= $showCaption ?>,
+                    "width": "<?= $width; ?>",
+                    "height":   "<?= $height ?>",
+                    "thumbwidth": <?= $thumbWidth; ?>,
+                    "thumbheight": <?= $thumbHeight; ?>,
+                    <?php if ($block->getVar("gallery/transition/duration")): ?>
+                        "transitionduration": <?= $block->getVar("gallery/transition/duration"); ?>,
+                    <?php endif; ?>
+                    "transition": "<?= $block->getVar("gallery/transition/effect"); ?>",
+                    <?php if (($block->getVar("gallery/navarrows"))): ?>
+                        "navarrows": <?= $block->getVar("gallery/navarrows"); ?>,
+                    <?php endif; ?>
+                    "navtype": "<?= $block->getVar("gallery/navtype"); ?>",
+                    "navdir": "<?= $navDir ?>",
+                    "thumbmargin": <?= $helper->getConfig('pages/product_view/moreview_margin') ?>
+                },
+                "fullscreen": {
+                    "nav": "<?= $block->getVar("gallery/fullscreen/nav"); ?>",
+                    <?php if ($block->getVar("gallery/fullscreen/loop")): ?>
+                        "loop": <?= $block->getVar("gallery/fullscreen/loop"); ?>,
+                    <?php endif; ?>
+                    "navdir": "<?= $navDir; ?>",
+                    <?php if ($block->getVar("gallery/transition/navarrows")): ?>
+                        "navarrows": <?= $block->getVar("gallery/fullscreen/navarrows"); ?>,
+                    <?php endif; ?>
+                    "navtype": "<?= $block->getVar("gallery/fullscreen/navtype"); ?>",
+                    <?php if ($block->getVar("gallery/fullscreen/arrows")): ?>
+                        "arrows": <?= $block->getVar("gallery/fullscreen/arrows"); ?>,
+                    <?php endif; ?>
+                    <?php if ($block->getVar("gallery/fullscreen/caption")): ?>
+                        "showCaption": <?= $block->getVar("gallery/fullscreen/caption"); ?>,
+                    <?php endif; ?>
+                    <?php if ($block->getVar("gallery/fullscreen/transition/duration")): ?>
+                        "transitionduration": <?= $block->getVar("gallery/fullscreen/transition/duration"); ?>,
+                    <?php endif; ?>
+                    "transition": "<?= $block->getVar("gallery/fullscreen/transition/effect"); ?>"
+                },
+                "breakpoints": <?= $block->getBreakpoints(); ?>
+            }
+        }
+    }
+</script>

@@ -1,0 +1,24 @@
+:root {
+    --cont-max-width: @container_full_max_width;
+}
+.sticky-menu.active .panel.wrapper,
+.breadcrumbs .items,
+.page-main:not(.page-main-full) > div,
+.container{
+    width: 100%;
+    max-width: @container_full_max_width;
+}
+.cdz-navigation {
+    max-width: 100%;
+}
+.section-menu-wrap {
+    display: none;
+}
+@media only screen and (min-width: 1200px) and (max-width: @container_full_max_width) {
+    .sticky-menu.active .panel.wrapper,
+    .breadcrumbs .items,
+    .page-main:not(.page-main-full) > div,
+    .container {
+        padding-inline: @container_full_side_padding;
+    }
+}

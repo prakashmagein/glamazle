@@ -1,0 +1,128 @@
+/*CDZ Custom Slideshow caption position*/
+.cdz-slide-caption{
+	position:absolute;
+	.button-link{
+		display: inline-block;
+		cursor: pointer;
+		text-transform: uppercase;
+	    .abs-borderradius(30px);
+	    .abs-transition();
+	    &:hover, &:visited {
+	    	.abs-style(#ffffff, #ff3b22 , #ff3b22) !important;
+	    }
+	}
+	@media @tablet_vertical{
+		&.text-left{
+			text-align: left !important;
+		}
+		&.text-right{
+			text-align: right !important;
+		}
+		&.slide-top{    
+			&-left{     
+				left: 15%;
+				top: 50%;
+        		transform: translateY(-50%);
+			}
+			&-right{
+				right: 15%;
+				top: 50%;
+        		transform: translateY(-50%);
+			}
+			&-center{
+				max-width: 600px;
+				top: 50%;
+				left: 50%;
+                transform: translateY(-50%) translateX(-50%);
+			}
+		}
+		&.slide-bottom{   
+			&-left{     
+				left: 7%;
+				bottom: 10%;
+			}
+			&-right{
+				right: 7%;
+				bottom: 10%;
+			}
+		}
+		&.slide-middle{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			top: 0;
+			left: 0;
+			flex-direction: column;
+		}
+		.button-link{
+			font-size: 14px;
+		    padding: 7px 45px;
+		    margin-top: 30px;
+		}
+	}
+	
+	.slide-subtitle{
+		font-size: var(--ss-subtitle-fontsize);
+	}
+	.slide-title{
+		font-size: var(--ss-title-fontsize);
+	}
+	.slide-desc{
+		font-size: var(--ss-desc-fontsize);
+	}
+	@media @tablet_strict{
+		.slide-subtitle{
+			font-size: var(--sstl-subtitle-fontsize);
+		}
+		.slide-title{
+			font-size: var(--sstl-title-fontsize);
+		}
+		.slide-desc{
+			font-size: var(--sstl-desc-fontsize);
+		}
+		.slide-desc {
+			overflow: hidden;
+	        white-space: normal;
+	        display: -webkit-box;
+	        -webkit-line-clamp: 1;
+	        text-overflow: ellipsis;
+	        -webkit-box-orient: vertical;
+	        position: relative;
+		}
+	}	
+	@media @phone{
+		width: 80%;
+		margin: 0 10%;
+	    top: 50%;
+        transform: translateY(-50%);
+	    p{
+	    	margin-bottom: 4px;
+	    }
+	    .slide-subtitle{
+			font-size: var(--ssmb-subtitle-fontsize);
+		}
+		.slide-title{
+			font-size: var(--ssmb-title-fontsize);
+		}
+		.slide-desc{
+			font-size: var(--ssmb-desc-fontsize);
+		}
+		.button-link{
+			font-size: 8px;
+		    padding: 2px 10px;
+		    margin-top: 0;
+		}
+		.slide-desc {
+			overflow: hidden;
+	        white-space: normal;
+	        display: -webkit-box;
+	        -webkit-line-clamp: 1;
+	        text-overflow: ellipsis;
+	        -webkit-box-orient: vertical;
+	        position: relative;
+		}
+		
+	}
+}

@@ -1,0 +1,58 @@
+<?php
+$wishlistHelper = $this->helper('Magento\Wishlist\Helper\Data');
+?>
+<?php if ($wishlistHelper->isAllow()) : ?>
+<div class="mini-list" ng-controller="WishListCtrl as ctrl">
+    <div class="block-top">
+        <div class="block-title">
+            <strong><?php echo __('Your Wish List') ?></strong><span ng-if="wishlist().counter"> - </span><span>{{wishlist().counter}}</span>
+            <md-button aria-label="<?php echo __('Go to Wish List') ?>" class="details md-icon-button launch md-ink-ripple" href="<?php echo $wishlistHelper->getListUrl() ?>"></md-button>
+        </div>
+    </div>
+    <div class="block-content" ng-if="!wishlist().counter" layout-padding>
+        <p class="empty"><?php echo __('You have no item in your wish list.') ?>
+    </div>
+    <div class="block-content" ng-if="wishlist().counter">
+        <ul class="product-items">
+            <li ng-repeat="item in wishlist().items" class="item product-item">
+                <div class="product-item-info row" style="width: 100%">
+                    <div class="col-xs-5 product-item-left">
+                        <a href="{{item.product_url}}" class="product-item-image">
+                            <img ng-src="{{item.image.src}}" class="img-responsive" alt="{{item.image.alt}}" />
+                        </a>
+                        <md-button aria-label="<?php echo __('Remove This Item') ?>" href="#" data-post="{{item.delete_item_params}}" class="md-icon-button btn-remove action delete"></md-button>
+                    </div>
+                    <div class="product-item-details col-xs-19 row">
+                        <div class="col-xs-14">
+                            <strong class="product-item-name">
+                                <a href="{{item.product_url}}" class="product-item-link">
+                                    <span>{{item.product_name}}</span>
+                                </a>
+                            </strong>
+                            <div class="product-item-price" ng-bind-html="item.product_price | to_trusted"></div>
+                        </div>
+                        <div class="col-xs-10">
+                            <div class="product-item-actions" ng-if="item.product_is_saleable_and_visible">
+                                <div class="actions-primary">
+                                    <md-button ng-if="item.product_has_required_options" aria-label="<?php echo __('Add to Cart') ?>" data-post='{{item.add_to_cart_params}}' href="#" class="md-ink-ripple tocart"><md-tooltip md-direction="top"><?php echo __('Add to Cart') ?></md-tooltip></md-button>
+                                    <form method="POST" ng-if="!item.product_has_required_options" action="{{getCartAction(item.add_to_cart_params)}}" >
+                                        <?php echo $block->getBlockHtml('formkey');?>
+                                        <input type="hidden" value="{{getCartData(item.add_to_cart_params, 'item')}}" name="item" />
+                                        <input type="hidden" value="{{getCartData(item.add_to_cart_params, 'uenc')}}" name="uenc" />
+                                        <md-input-container class="qty-box">
+                                            <label><?php echo __('Qty'); ?></label>
+                                            <input class="wl-item-qty md-input" value="{{parseInt(getCartData(item.add_to_cart_params, 'qty'))}}" type="text" name="qty" />
+                                        </md-input-container>
+                                        <md-button aria-label="<?php echo __('Add to Cart') ?>" type="submit" class="tocart"></md-button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<?php endif ?>
+

@@ -1,0 +1,13 @@
+{
+    "rltsquare_productreviewimages_reviewmedia": {
+        "column": {
+            "primary_id": true,
+            "review_id": true,
+            "media_url": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "RLTSQUARE_PRDREVIEWIMAGES_REVIEWMDA_REVIEW_ID_REVIEW_REVIEW_ID": true
+        }
+    }
+}

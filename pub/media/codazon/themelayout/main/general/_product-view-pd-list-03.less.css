@@ -1,0 +1,14 @@
+.pdv-list-03 {
+   .product-item {
+        .product-item-name {
+            a {
+                line-clamp: var(--name-lines, 2);
+                -webkit-line-clamp: var(--name-lines, 2);
+                box-orient: vertical;
+                -webkit-box-orient: vertical;
+                display: -webkit-box;
+                overflow: hidden;
+            }
+        }
+   }       
+}

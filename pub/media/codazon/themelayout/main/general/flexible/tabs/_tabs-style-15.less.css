@@ -1,0 +1,142 @@
+.tabs-style-15 {
+    .box-cate-link {
+        padding: 0;
+        list-style: none;
+        margin-bottom: 25px;
+        .item {
+            display: inline-block;
+            text-transform: uppercase;
+            color: @main_tab_text;
+            position: relative;
+            padding: 0px 20px 0px 35px;
+            .abs-style(@main_tab_text, @main_tab_border, @main_tab_background);
+            transition: all ease .5s;
+            .rtl-layout &{
+                padding: 0px 35px 0px 20px;
+            }
+            &:before{
+				content: '';
+			    position: absolute;
+			    top: 0;
+			    width: 0;
+			    height: 0;
+			    border-style: solid;
+			    border-width: 25px 0 25px 14px;
+			    border-color: transparent;
+			    right: -14px;
+	    		z-index: 2;
+    		    border-left-color: @main_tab_background;
+                transition: all ease .5s;
+                .rtl-layout &{
+                    transform: rotate(180deg);
+                    left: -14px;
+                    right: auto;
+                }
+	    	}
+	    	&:after{
+	    		content: '';
+			    position: absolute;
+			    top: 0;
+			    width: 0;
+			    height: 0;
+			    border-style: solid;
+			    border-width: 25px 0 25px 14px;
+			    border-color: transparent;
+				right: -15px;
+			    border-left-color: @main_tab_background;
+			    z-index: 1;
+                transition: all ease .5s;
+                .rtl-layout &{
+                    transform: rotate(180deg);
+                    left: -15px;
+                    right: auto;
+                }
+	    	}
+            a {
+                font-size: 16px;
+                padding: 14px 0px;
+                display: block;
+                font-weight: 600;
+                min-height: 50px;
+                color: @main_tab_text;
+
+            }
+            &.active {
+            	 &:before,
+		    		&:after{
+		    			border-left-color: @main_tab_hover_background;
+		    		}
+                .abs-style(@main_tab_hover_text, @main_tab_hover_border, @main_tab_hover_background);
+                a {
+                    color: @main_tab_hover_text
+                }
+            }
+            &:hover {
+                &:not(.active) {
+                	&:before,
+		    		&:after{
+		    			border-left-color: @main_tab_hover_background;
+		    		}
+		    		.abs-style(@main_tab_hover_text, @main_tab_hover_border, @main_tab_hover_background);
+                    
+                    a {
+                        color: @main_tab_hover_text
+                    }
+                }
+            }
+        }
+    }
+    @media @phone{
+        .cdz-block-content{
+            text-align: center;
+        }
+        .mobile-toggle {
+            display: inline-block !important;
+            border: 2px solid;
+            padding: 6px 20px 6px;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin: 10px auto 15px;
+            .abs-borderradius(30px);
+            .abs-style(@main_tab_text, @main_tab_border, @main_tab_background);
+            &:before {
+                .abs-iconfont("\f107", 17px);
+                float: right;
+                margin-left: 10px;
+                z-index: 1;
+                position: relative;
+                line-height: 1;
+                .rtl-layout & {
+                    float: left;
+                    margin-left: 0;
+                    margin-right: 10px;
+                }
+            }
+            &:hover {
+                .abs-style(@btn_normal_text, @btn_normal_border, @btn_normal_border);
+            }
+            &.open:before {
+                .abs-transform(rotate(-180deg));
+            }
+        }
+        ul.box-cate-link {
+            position: absolute;
+            background: #ffffff;
+            z-index: 5;
+            width: 200px;
+            text-align: left;
+            border: 1px solid @main_border;
+            .abs-calc-left(~'(100% - 200px)/2');
+            li.item {
+                display: block;
+                width: 100%;
+                border: 0;
+                margin: 0;
+                text-transform: capitalize;
+                padding: 5px 10px;
+                .abs-borderradius(0);
+            }
+        }
+    }
+}

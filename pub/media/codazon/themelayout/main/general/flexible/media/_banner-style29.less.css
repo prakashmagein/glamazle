@@ -1,0 +1,34 @@
+.banner-style29 {
+    .cdz-banner{
+        position: relative;
+    }
+	.cdz-banner img {
+	    border: 18px solid #f6f6f6;
+	    position: relative;
+	    z-index: 1;
+	}
+	
+   @media @tablet_vertical {
+        .cdz-banner img {
+            width: 80%;
+        }
+        .rectangle {
+            position: absolute;
+            border-left: 52px solid #011321;
+            border-bottom: 52px solid #011321;
+            border-top: 0 solid transparent;
+            border-right: 0 solid transparent;
+            bottom: -38px;
+            left: -33px;
+            width: 340px;
+            height: 380px;
+            padding: 8px 8px 8px 0;
+            .rtl-layout &{
+                left: auto;
+                right: -33px;
+                border-left: 0;
+                border-right: 52px solid #011321;
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+<?php
+/**
+ * Copyright © 2018 Codazon, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+$helper = $this->helper(\Codazon\AjaxLayeredNavPro\Helper\Data::class);
+$enable = (bool)$helper->getConfig('codazon_ajaxlayerednavpro/general/enable_infinite_scroll');
+?>
+<?php if ($enable) : ?>
+<script id="cdz-lyn-loader" type="text/codazon-tmpl">
+<div class="double-bounce-spinner brand-loader" data-role="loader"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>
+</script>
+<script id="cdz-lyn-view-prev" type="text/codazon-tmpl">
+<div class="actions text-center"><button class="cdz-btn-load-more _prev action primary" type="button"><span><?= __('Load previous') ?></span></button></div>
+</script>
+<script id="cdz-lyn-view-next" type="text/codazon-tmpl">
+<div class="actions text-center"><button class="cdz-btn-load-more _next action primary" type="button"><span><?= __('Load Next') ?></span></button></div>
+</script>
+<?php
+$widget = [
+    '*' => [
+        'Codazon_AjaxLayeredNavPro/js/infinite-scroll' => [
+            'autoLoadMore' => (bool)$helper->getConfig('codazon_ajaxlayerednavpro/general/auto_load_more')
+        ]
+    ]
+];
+?>
+<script type="text/x-magento-init"><?= json_encode($widget); ?></script>
+<style>
+.products~.toolbar{display:none!important;}
+.toolbar-products .toolbar-amount{display:none;}
+</style>
+<?php endif ?>

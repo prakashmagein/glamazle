@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright © Codazon. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<script>
+require(['jquery'], ($) => {
+    var sbActive =  $('body').hasClass('filter-active'),
+    getCount = () => { return $('.sidebar-main .block.filter .filter-current .items > li').length; };
+    $(document).on("ajaxStart", () => {
+        sbActive = $('body').hasClass('filter-active');
+    }).on("ajaxStop", () => {
+        if (sbActive && window.innerWidth < 768) {
+            $('body').addClass('filter-active');
+            $('.sidebar-main > .block.filter').addClass('active');
+        }
+    });
+    $('body').on('contentUpdated', () => {
+        let $sidebar = $('.sidebar-main > .block.filter'), t;
+        if ($sidebar.length) {
+            $sidebar.find('.block-title.filter-title').attr('data-count', getCount());
+            t = setInterval(() => {
+                if ($sidebar.data('mageCollapsible') && !$sidebar.hasClass('dms-chg-off')) {
+                    $sidebar.addClass('dms-chg-off');
+                    $('.sidebar-main > .block.filter, .sidebar-main .filter-options > .filter-options-item').off('dimensionsChanged');
+                    if (sbActive) {
+                        $sidebar.data('mageCollapsible').activate();
+                    }
+                    clearInterval(t);
+                }
+            }, 50);
+        }
+    });
+});
+</script>

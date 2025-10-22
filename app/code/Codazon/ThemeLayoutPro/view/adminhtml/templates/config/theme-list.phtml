@@ -1,0 +1,174 @@
+<?php
+/**
+ * Copyright © 2018 Codazon. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+$themeList = $this->getThemeList();
+$activeThemeId = $this->getActiveThemeId();
+$activeTheme = false;
+if (count($themeList)) {
+    foreach($themeList as $theme) {
+        if ($activeThemeId === $theme->getId()) {
+            $activeTheme = $theme;
+            break;
+        }
+    }
+}
+?>
+<?php if ($version = $block->getThemeVersion()) : ?>
+<div class="theme-info-container"><div class="theme-version"><?= __('Version %1', $version) ?></div></div>
+<?php endif ?>
+<?php if (count($themeList)) { ?>
+<div class="cdz-section-title"><?= __('Step 1 - Choose Theme') ?></div>
+<div class="mage-themes">
+    <?php if ($activeTheme !== false) : ?>
+    <div class="active-theme theme-item">
+        <div class="item-inner">
+            <div class="theme-label"><?= __("Current Theme") ?></div>
+            <div class="theme-title"><?= $theme->getThemeTitle(); ?></div>
+            <div class="theme-code"><span class="label"><?= __('Code:') ?></span> <?= $theme->getCode(); ?></div>
+        </div>
+    </div>
+    <?php endif ?>
+    <div class="mage-theme-list">
+     <?php foreach ($themeList as $theme) : $id = $theme->getId(); ?>
+        <?php $isActive = ($activeThemeId === $id) ?>
+        <div class="theme-item col-l-2 col-m-3 col-xs-4<?= $isActive ? ' active': ''?>">
+            <div class="item-inner">
+                <div class="item-num">ID: <?= $id ?></div>
+                <div class="theme-title"><?= $theme->getThemeTitle(); ?></div>
+                <div class="theme-item-actions">
+                    <?php if (!$isActive) : ?>
+                    <button class="btn-link activate-theme <?php if ($isActive) : ?>disabled<?php endif ?>" onclick="window.location.href = '<?= $this->getActivateThemeUrl($theme); ?>';" <?php if ($isActive) : ?>disabled<?php endif ?>><?= __('Activate') ?></button>
+                    <?php else : ?>
+                    <div class="btn-link activate-theme active"></div>
+                    <?php endif ?>
+                </div>
+                <button class="btn-remove" title="<?= __("Remove theme") ?>" data-remove-theme="<?= $theme->getId() ?>"><?= __('Remove') ?></button>
+                <?php /* <button class="btn-clone" title="<?= __("Clone theme") ?>" data-clone-theme="<?= $theme->getId() ?>"><?= __('Clone') ?></button> */ ?>
+            </div>
+        </div>
+    <?php endforeach ?>
+    </div>
+</div>
+<div class="cdz-section-note">
+    <div>(1) <?= __('You can activate child theme (of %1) if you want to modify source files. You should not modify our core files directly.', '<strong class="cdz-strong">'.\Codazon\ThemeLayoutPro\Model\CodazonTheme::DEFAULT_THEME_CODE.'</strong>') ?></div>
+    <div>(2) <?= __('You can remove unused theme (from old versions).') ?></div>
+</div>
+<script>
+require(['jquery', 'Magento_Ui/js/modal/confirm', 'Magento_Ui/js/modal/alert'], function($, confirm, alert) {
+    $(document).on('click', '[data-remove-theme]', function() {
+        var $btn = $(this), themeId = $btn.data('remove-theme'), $theme = $btn.parents('.theme-item').first();
+        removeTheme = function() {
+            $.ajax({
+                url: '<?= $this->getUrl('themelayoutpro/config/removeTheme') ?>',
+                data: {theme_id: themeId},
+                method: 'post',
+                success: function(rs) {
+                    alert({
+                        title: '<?= __('Result') ?>',
+                        content: rs.message
+                    });
+                    if (rs.success) {
+                        $theme.fadeOut(1000, 'swing', function() {
+                            $theme.remove();
+                        });
+                    }
+                }
+            });
+        };
+        confirm({
+            title: '<?= __("Warning") ?>',
+            content: '<?= __("Are you sure?") ?>',
+            actions: {
+                confirm: removeTheme,
+                cancel: function () {},
+                always: function () {}
+            }
+        });
+    });
+});
+</script>
+<?php } ?>
+
+<?php
+$designList = $this->getCodazonThemeList();
+$activeDesignId = $this->getCodazonActiveThemeId();
+$activeDesign = false;
+if (count($designList)) {
+    foreach($designList as $design) {
+        if ($activeDesignId === $design->getId()) {
+            $activeDesign = $design;
+            break;
+        }
+    }
+}
+$grid = 'col-l-2 col-m-3 col-xs-4';
+?>
+<?php if (count($designList)) : ?>
+<div class="cdz-section-title"><?= __('Step 2 - Choose Design') ?></div>
+<div class="theme-container">
+<?php if ($activeDesign !== false) : ?>
+<?php
+$design = $activeDesign;
+$isActive = true;
+$grid = 'col-l-3 col-m-4 col-xs-4';
+?>
+<div class="col-l-3 col-m-4 col-xs-12 col-left">
+    <div class="theme-list">
+        <div class="item theme-item large-item col-l-12 col-m-12 col-xs-4">
+            <div class="active-theme"><?= __('Active') ?></div>
+            <div class="item-inner">
+                <div class="item-top">
+                    <img class="theme-img" src="<?= $design->getPreviewImageUrl(400) ?>" />
+                    <div class="hovered-section">
+                        <div class="hovered-section-inner">
+                            <a href="<?= $this->getImportDataUrl($design) ?>" class="btn-link import-data admin-icon"><?= __('Import Data') ?></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-bottom">
+                    <h3 class="theme-title"><?= $design->getThemeTitle(); ?></h3>
+                    <div class="actions">
+                        <a class="btn-link config-theme admin-icon" href="<?= $this->getConfigUrl($design); ?>"><?= __('Config') ?></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-l-9 col-m-12 col-xs-12 col-right">
+<?php endif ?>
+<pre style="display:none;" class="dir_path"><?php echo __DIR__ ?></pre>
+    <div class="theme-list">
+    <?php foreach ($designList as $design) : ?>
+        <?php $isActive = ($activeDesignId == $design->getId()) ?>
+        <?php if ($isActive) continue ?>
+        <div class="item theme-item <?= $grid ?>">
+            <div class="item-inner">
+                <div class="item-top">
+                    <img class="theme-img" src="<?= $design->getPreviewImageUrl(300) ?>" />
+                    <div class="hovered-section">
+                        <div class="hovered-section-inner">
+                            <a href="<?= $this->getImportDataUrl($design) ?>" class="btn-link import-data admin-icon"><?= __('Import Data') ?></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-bottom">
+                    <h3 class="theme-title"><?= $design->getThemeTitle(); ?></h3>
+                    <div class="actions">
+                        <button class="btn-link activate-theme <?php if ($isActive) : ?>disabled<?php endif ?>" onclick="window.location.href = '<?= $this->getActivateDesignUrl($design); ?>';" <?php if ($isActive) : ?>disabled<?php endif ?>><?= __('Activate') ?></button>
+                        <a class="btn-link config-theme admin-icon" href="<?= $this->getConfigUrl($design); ?>"><?= __('Config') ?></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach ?>
+    </div>
+<?php if ($activeDesign !== false) : ?>
+</div>
+<?php endif ?>
+</div>
+<?php endif ?>

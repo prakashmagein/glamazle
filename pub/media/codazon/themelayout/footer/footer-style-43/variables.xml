@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<config>
+  <identifier>footer-style-43</identifier>
+  <title>Footer Style 43</title>
+  <variables>
+    <footer_background>#f7dcd1</footer_background>
+    <footer_background_file></footer_background_file>
+    <footer_background_image_option>0 0 no-repeat fixed</footer_background_image_option>
+    <footer_background_normal>#b07150</footer_background_normal>
+    <footer_border>#b07150</footer_border>
+    <footer_bottom_background>#f7dcd1</footer_bottom_background>
+    <footer_font>16px</footer_font>
+    <footer_hover_text>#b07150</footer_hover_text>
+    <footer_text>#aaaaaa</footer_text>
+    <footer_text_normal>#ffffff</footer_text_normal>
+    <footer_title_font>36px</footer_title_font>
+    <footer_title_text>#b07150</footer_title_text>
+    <footer_top_background>#f8f8f8</footer_top_background>
+  </variables>
+  <layout_xml>&lt;body&gt; &lt;referenceBlock name="footer_links" remove="true" /&gt; &lt;referenceBlock name="copyright" remove="true" /&gt; &lt;referenceBlock name="report.bugs" remove="true" /&gt; &lt;referenceBlock name="form.subscribe" remove="true" /&gt; &lt;move element="theme-layout-footer" destination="footer-container" /&gt; &lt;/body&gt;</layout_xml>
+  <custom_variables/>
+  <custom_fields>
+    <version>652a54d57ae15</version>
+    <custom_variables></custom_variables>
+    <custom_less_code></custom_less_code>
+    <custom_css_code></custom_css_code>
+  </custom_fields>
+  <parent></parent>
+  <content>&lt;div class="footer-style-43 text-center"&gt;&#xD;
+&lt;div class="footer content"&gt;&#xD;
+&lt;div class="footer-content-top"&gt;&#xD;
+&lt;div class="row"&gt;&#xD;
+&lt;div class="col-xs-24 col-sm-16 col-sm-push-4 col-md-12 col-md-push-6"&gt;&#xD;
+&lt;div class="newsletter"&gt;&#xD;
+&lt;p class="newsletter-title"&gt;Stay Informed With Us&lt;/p&gt;&#xD;
+&lt;div class="newsletter-content"&gt;{{block class="Magento\Newsletter\Block\Subscribe" name="cdz.newsletter" template="Magento_Newsletter::subscribe.phtml"}}&lt;/div&gt;&#xD;
+&lt;p class="des"&gt;1 UK only; 2. Offar expiras 23:59(GMT) 10/02/16; 3. T&amp;amp;C's apply&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="footer-content-middle"&gt;&#xD;
+&lt;ul class="footer-list-item hover-link02"&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;&lt;span class="label-hover"&gt;Help&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;&lt;span class="label-hover"&gt;Track Order&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;&lt;span class="label-hover"&gt;Privacy policy&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;&lt;span class="label-hover"&gt;Terms of service&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;&lt;span class="label-hover"&gt; Terms of service&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;/ul&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="footer-content-bottom"&gt;&#xD;
+&lt;div class="footer-payment"&gt;&lt;img class="img-responsive" src="{{media url="wysiwyg/codazon/footer-payment.png"}}" alt="Accept Payment"&gt;&lt;/div&gt;&#xD;
+&lt;div class="footer-address"&gt;&#xD;
+&lt;p&gt;&#xA9; 2018 Codazon Ltd. Trademarks and brands&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;</content>
+</config>

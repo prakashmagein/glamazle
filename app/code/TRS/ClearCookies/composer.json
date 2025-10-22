@@ -1,0 +1,14 @@
+{
+  "name": "trs/clear-cookies",
+  "description": "Clear cookies on session destroy",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "TRS\\ClearCookies\\": ""
+    }
+  }
+}

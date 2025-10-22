@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Codazon, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <attribute name="class" value="pdv-l06"/>
+        <referenceContainer name="content">
+            <container name="product.top.row" htmlTag="div" htmlClass="full-width pdif-sticky-wrap product-info-wrap pdif-row">
+                <container name="product.wrap.left" htmlTag="div" htmlClass="product-left-wrap pdif-col">
+                    <container name="product.wrap.top" htmlTag="div" htmlClass="pdif-row pdif-wrap-top" before="-">
+                        <container name="product.info.left" htmlTag="div" htmlClass="pdif-col product-left pdif-sticky-col" />
+                        <container name="product.info.center" htmlTag="div" htmlClass="pdif-col product-center">
+                            <container name="product.main.top" htmlTag="div" htmlClass="product-main-top product-info-main pdif-box">
+                                <block class="Magento\Catalog\Block\Product\View" name="product.form.wrapper" template="Magento_Catalog::product/view/form-wrapper.phtml">
+                                    <action method="setData">
+                                        <argument name="name" xsi:type="string">has_form_tag</argument>
+                                        <argument name="value" xsi:type="boolean">0</argument>
+                                    </action>
+                                </block>
+                            </container>
+                            <container name="product.main.middle" htmlTag="div" htmlClass="product-main-middle" />
+                            <block class="Magento\Catalog\Block\Product\View" name="product.main.bottom" template="Magento_Catalog::product/view/pdv-box.phtml" />
+                        </container>
+                    </container>
+                    <block class="Magento\Catalog\Block\Product\View" name="product.wrap.bottom" template="Magento_Catalog::product/view/pdv-box.phtml" />
+                </container>
+                <container name="product.wrap.right" htmlTag="div" htmlClass="pdif-col product-right-wrap pdif-sticky-col product-info-main" htmlId="pdv-desk-cart-section">
+                    <container name="product.right.top" htmlTag="div" htmlClass="product-main-top pdif-box" />
+                    <block class="Magento\Catalog\Block\Product\View" name="product.right.bottom" template="Magento_Catalog::product/view/pdv-box.phtml" />
+                </container>
+                <block class="Magento\Catalog\Block\Product\View" name="product.layout.handle" template="Magento_Catalog::product/view/layout/layout-06.phtml" />
+            </container>
+        </referenceContainer>
+        
+        <block class="Magento\Catalog\Block\Product\View" name="product.inventory.deal" template="Magento_Catalog::product/view/inventory-deal.phtml" />
+        <referenceContainer name="product.info.media" htmlClass="product media full-width pdif-box" />
+        <referenceContainer name="product.info.main" htmlClass="product-info-main-inner" />
+        
+        <!-- move cart -->
+        <referenceBlock name="product.info">
+            <container name="product.info.form.middle" as="form_middle">
+                <block class="Magento\Catalog\Block\Product\View" name="product.info.addtocart_wrap" template="Magento_Catalog::product/view/product-info-form-content.phtml" />
+            </container>
+        </referenceBlock>
+        <move element="product.info.form.content" as="product_info_form_content" destination="product.info.addtocart_wrap" />
+        <move element="product.info.form.options" as="options_container" destination="product.info.addtocart_wrap" />
+        <move element="product.info" destination="product.right.top" />
+        <referenceBlock name="cdz-floating-addtocart">
+            <action method="setData">
+                <argument name="name" xsi:type="string">only_mobile</argument>
+                <argument name="value" xsi:type="boolean">true</argument>
+            </action>
+            <action method="setData">
+                <argument name="name" xsi:type="string">break_point</argument>
+                <argument name="value" xsi:type="number">1201</argument>
+            </action>
+        </referenceBlock>
+        <!-- end move cart -->
+        
+        <move element="product.info.media" destination="product.info.left" />
+        <move element="page.main.title" destination="product.main.top" before="-" />
+        <move element="product.info.main" destination="product.main.top" />
+        <move element="shipping-estimation-simple" destination="product.info.main" />
+        <move element="product.inventory.deal" destination="product.main.top" />
+        <move element="product.info.extrahint" destination="product.right.top" />
+        <!-- move element="product.info.review" destination="product.info.main" before="-" /-->
+        <move element="product.info.overview" destination="product.main.top" />
+        <move element="product-static-text" destination="product.right.bottom" /> 
+
+        <move element="product.info.details" destination="product.main.middle" />
+        <move element="catalog.product.related" destination="product.main.bottom"  />
+        <move element="product.info.upsell" destination="product.main.bottom" />
+        <move element="reviews.tab" destination="product.wrap.bottom" />
+        <referenceBlock name="product.info.details">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Magento_Catalog::product/view/details-03.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="shipping-estimation-configurable" remove="true" />
+        <referenceBlock name="catalog.product.related" template="Magento_Catalog::product/list/items-03.phtml" />
+        <referenceBlock name="product.info.upsell" template="Magento_Catalog::product/list/items-03.phtml" />
+        
+        
+        <block class="Magento\Catalog\Block\Product\View" name="product.review.summary" template="Magento_Catalog::product/view/review-summary.phtml" />
+        
+        
+        <referenceContainer name="product.info.price">
+            <block class="Magento\Catalog\Block\Product\View" name="product.sizeguide" template="Magento_Catalog::product/view/size-guide.phtml" after="-" />
+        </referenceContainer>
+        <block class="Magento\Catalog\Block\Product\View" name="product.buynow" template="Magento_Catalog::product/view/buy-now.phtml" />
+        
+        <referenceContainer name="product-static-text">
+            <block class="Magento\Framework\View\Element\Template" name="product-custom-text" template="Magento_Theme::html/custom-text.phtml">
+                <action method="setData">
+                    <argument name="name" xsi:type="string">config_path</argument>
+                    <argument name="value" xsi:type="string">pages/product_view/custom_text</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        
+        <referenceBlock name="product.info.media.image">
+            <action method="setData">
+                <argument name="name" xsi:type="string">media_side</argument>
+                <argument name="value" xsi:type="string">left</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="product.info.overview">
+            <action method="setData">
+                <argument name="name" xsi:type="string">at_label</argument>
+                <argument name="value" xsi:type="string" translate="true">Quick Overview</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

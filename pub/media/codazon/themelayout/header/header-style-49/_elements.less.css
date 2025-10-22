@@ -1,0 +1,48 @@
+/*Sport*/
+@media @tablet_vertical {
+	.page-header{
+        background: @header_background;
+		.sticky-menu:not(.active){
+			margin-top:0;
+			margin-bottom:0;	
+			.panel.header{
+				padding-top: 15px;
+				padding-bottom: 15px;
+			}			
+		}
+		.logo{margin:0;}
+		.panel.header > .row{
+			display: flex;
+			align-items: center;
+		}
+		.store-info-top{
+			p{
+				margin:0;
+			}
+		}
+		.header-top{
+			border-bottom: 1px solid @header_border;
+			padding: 10px 0;
+		}
+		.cdz-horizontal-menu .groupmenu li.level0>a.menu-link{
+			text-transform: none;
+		}
+		.cdz-horizontal-menu .groupmenu li.item.level0{
+			float:none;
+		}
+		.cdz-horizontal-menu .groupmenu{text-align: center;}
+		.cdz-navigation .cdz-horizontal-menu .groupmenu .groupmenu-drop{
+			text-align: start;
+		}
+		.social-wrap a .fa{font-size: 16px;}
+	}
+	.cdz-menu.cdz-toggle-menu .item.level-top>.menu-link, 
+	.cdz-menu.cdz-toggle-menu .groupmenu-drop li.item a{
+		text-transform: none;
+	}
+}
+@media @tablet_strict{
+	.page-header .logo {
+	    margin: 10px 0 0 20px;
+	}
+}

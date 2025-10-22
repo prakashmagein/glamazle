@@ -1,0 +1,42 @@
+.wrapper-adv-style-22{
+	--adv22-text: #ffffff;
+	--adv22-bkg-color: #3a6051;
+	position: relative;
+	&:before{
+		content: ''; 
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 50%;
+		background-color: var(--adv22-bkg-color);
+	}
+	.cdz-banner{
+		margin: 0 10px;
+	}
+	.cdz-banner-title{
+		color: var(--adv22-text);
+		padding: 50px 0;
+	}
+	.counter{
+    	padding: 40px;
+    	margin-top: -70px;
+    	background-color: #ffffff;
+    	.abs-boxshadow(~'0px 2px 15px #a7a4a4');
+    }
+    .count-number{
+	    font-weight: 600;
+	    font-size: 200%;
+	    color: @main_hover_text;
+    }
+    @media @phone{
+    	.counter{
+	    	padding: 10px;
+	    	margin-top: 0;
+	    }
+	     .count-number{
+		    font:@fm_h4;
+
+	    }
+    }
+}

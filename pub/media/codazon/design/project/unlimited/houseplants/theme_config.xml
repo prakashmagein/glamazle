@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Codazon. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Codazon_ThemeLayoutPro:etc/config.xsd">
+    <default>
+        <themelayoutpro>
+			<general>
+				<newsletter_popup>unlimited-houseplants-newsletter-popup</newsletter_popup>
+			</general>
+			<header>
+				<header>header-style-50</header>
+				<vertical_menu>unlimited-supermarket-left-navigation</vertical_menu>
+				<main_menu>unlimited-houseplants-main-menu</main_menu>
+			</header>
+            <main_content>
+                <main_content>main-content-style50</main_content>
+            </main_content>
+            <footer>
+                <footer>footer-style-50</footer>
+            </footer>
+		</themelayoutpro>
+        <images>
+            <category>
+                <product_image_width>333</product_image_width>
+                <product_image_height>420</product_image_height>
+            </category>
+        </images>
+	</default>
+</config>

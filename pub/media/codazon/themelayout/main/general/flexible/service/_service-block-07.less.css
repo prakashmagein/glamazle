@@ -1,0 +1,63 @@
+/*Beauty Spa*/
+.service-banner-style07{
+	padding-top: 32px;
+	padding-bottom: 22px;
+	.item{
+		text-align: center;	
+		border: 1px solid @service-banner06-text01;	
+		border-radius: @main_box_radius;
+		.abs-transition();
+		.item-icon{
+			background-color:@service-banner06-text04;	
+			font-size: 30px;
+			position: relative;
+			top: -32px;
+			padding: 0 10px;
+			&:before{
+				background-color:@service-banner06-text01;	
+				color:@service-banner06-text02;	
+				.abs-transition();
+				border-radius: 100%;
+				padding: 15px;
+				width: 60px;
+				height: 60px;
+				display: inline-block;
+			}
+		}
+		.item-content{
+			padding: 10px 20px;
+		}
+		.item-bottom{
+			position: relative;
+			bottom: -22px;
+			.button{
+				background-color:@service-banner06-text01;	
+				color:@service-banner06-text02;	
+				border-color: @service-banner06-text01;	
+				text-transform: none;
+			}
+		}
+		&:hover{
+			border-color: @service-banner06-text02;	
+			.item-icon:before{
+				background-color:@service-banner06-text02;	
+				color:@service-banner06-text03;	
+			}
+			.item-bottom{
+				.button{
+					background-color:@service-banner06-text02;	
+					color:@service-banner06-text03;	
+					border-color: @service-banner06-text02;
+				}
+			}
+		}
+	}
+    @media @phone {
+        .item{
+            margin-bottom: 70px;
+			&.last {
+				 margin-bottom: 0px;
+			}
+        }
+    }
+}

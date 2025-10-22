@@ -1,0 +1,256 @@
+/* Watches */
+@media @tablet_vertical {
+	.space-lg{margin-bottom: 80px;}
+	.block-bg-02.small-padding {
+		padding: 80px 0 40px;
+	}
+	.banner-style11 .bc-title{
+		font-size: 400%;
+		line-height: 1;
+		margin: 40px 0;
+	}
+}
+.banner-style11 .bc-title{
+	font-weight: 400;
+}
+.slide-caption {
+	.sstext-6x{
+		font: @f_special;
+	}
+	.button-link {
+		display: inline-block;
+		padding: 10px 20px;
+		margin: 0 10px;
+		margin-top: 10px;
+		font-size: 18px;
+		border: 1px solid;
+		background: @btn_normal_background;
+		color: @btn_normal_text;
+		border-color:@btn_normal_border;
+		&.first{
+			background: @btn_default_background;
+			color: @btn_default_text;
+			border-color:@btn_default_border;
+		}
+		&:hover, &.first:hover{
+			background: @btn_hover_background;
+			color: @btn_hover_text;
+			border-color:@btn_hover_border;
+		}
+	}
+	@media @tablet_vertical {
+		&.slide-top-center{
+			top: 48%;
+			max-width: 100%;
+		}
+		.button-link {
+			margin-top: 60px;
+			padding: 14px 35px;
+		}
+	}
+}
+/*Title*/
+.cdz-block-title{
+	text-align: center;
+	.b-title.h2{		
+		text-transform: uppercase;
+		color: @main_title_text;
+		letter-spacing: .05em;
+		font-weight: 400;
+		font-size: 38px;
+	}
+	@media @phone{
+		.b-title.h2{	
+			font: @f_h2;
+		}
+	}
+}
+.tabs-style-04{
+    .cdz-tabs.df-tabs{box-shadow:none;}
+    .box-cate-link .item:hover .tab-title, 
+    .box-cate-link .item.active .tab-title,
+    .box-cate-link .item .tab-title{border-width:0;}
+}
+
+.post-list-style21 {
+	.item-inner{padding:0;}
+	.post-top:before{display: none;}
+	.post-title .post-item-link{
+		font: @f_h2;
+		font-weight: 300;
+		white-space: normal;
+		&:hover{
+			color:@main_hover_text;
+		}
+	}
+	.post-date{
+		font-style: normal;
+		font-size: 100%;
+		color: @main_text_normal;
+		padding: 20px 0 10px;
+	}
+}
+
+.service-banner-style05{
+	border-top: 1px solid @main_border;
+    padding-top: 60px;
+}
+/*Product view*/
+.product-info-main .product-options-wrapper{	
+	.swatch-option.text{
+		border-radius: 0;
+	    border: 1px solid #000000;
+	    padding: 2px 5px;			
+		font-weight: 500;
+		min-width: 25px;
+		color: @main_productname_text;    			
+	}
+}
+.boby-bottom{
+	.cdz-block-title .b-title span:after{
+		display:none;
+	}
+}
+.cdz-product-wrap{
+	.cdz-banner{
+		display: none
+	}
+}
+@media @tablet-strict_small{
+	.cms-index-index .columns .column.main{padding-bottom: 0}
+}
+@media @phone{
+	.cdz-slideshow {
+	   .slide-caption .sstext-6x{
+		   font-size: 200%;
+	   }
+	}
+	.cdz-product-wrap,
+	.cdz-tabs-wrap {
+		.cdz-block-title{
+			margin-bottom: 15px !important;
+			.title-desc{
+				width: 100%
+			}
+		}
+	}
+	.brand-style01 {
+	    padding: 15px 0;
+	}
+}
+@media screen and (max-width: 379px){
+	.product-col-left{
+		width: 100%; margin-bottom: 5px;
+	}
+	.product-col-right{
+		width: 100%;
+	}
+}
+.base-slider {
+	.owl-dots-style-02(@main_hover_text);
+	.slider-arrow-style-05();
+}
+
+/*Breadcrumbs*/
+.breadcrumbs{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #f9f9f9;
+}
+/*Blog*/
+.blog-page .sidebar .block {
+    border: 1px solid @main_border;
+    padding: 15px 20px;
+    &.blog-search {
+    	padding: 8px 15px 5px;
+    	.block-content{
+    		padding-top:0;
+    	}
+    }
+}
+/*Category*/
+.sidebar .block:not(.account-nav){
+	.block-style01();	
+}
+.toolbar{
+	.toolbar-option4();
+	background: #f9f9f9;
+}
+/*category - product list*/
+.list.products-list{
+	.item.product-item{
+		.toolbar-option2(0px);
+	}
+	/*label*/
+	.cdz-product-labels{
+		.prolabels-style05();
+	}
+}
+
+/*My account*/
+.account-nav{
+	.content{
+		.toolbar-option2(0px);
+	}
+}
+
+/*Blog*/
+.post-list .post-holder,
+.post-view .post-holder{
+	.blog-box(1px);
+}
+
+
+/*Product page*/
+.product-view-style-02,
+.product-view-style-01,
+.product-view-style-03{
+	.main-inner,
+	.product.info.detailed .product.items{
+		padding: 0;
+		.product-info-box(0);
+	}
+	@media @phone{
+		.product.info.detailed .product.items{
+			padding: 10px;
+		}
+	}
+}
+.product-view-style-03 .product-main-top,
+.product-view-style-02 .product-main-top .product-info-main{
+	padding: 0
+}
+
+.product-view-style-02 .product-left {
+    margin-left: -10px;
+    &.rtl-layout {
+    	margin-left: 0;
+    	margin-right: -10px;
+    }
+}
+
+.product-view-style-01 .product-media-wrapper{
+	margin-left: -20px;
+	&.rtl-layout {
+    	margin-left: 0;
+    	margin-right: -20px;
+    }
+}
+
+.product-view-style-04 {
+	.product-media-wrapper,
+	.product-info-main {
+		.product-left{
+			.product-info-box(0px);
+		}
+		.product-right{
+			.product-info-box(1px);
+		}
+	}
+	.product.info.detailed .product.items{
+		.product-info-box(0px);
+	}
+}
+.block.related .products-grid .product-item .product-item-top, .block.upsell .products-grid .product-item .product-item-top, .block.crosssell .products-grid .product-item .product-item-top {
+    padding: 0;
+}

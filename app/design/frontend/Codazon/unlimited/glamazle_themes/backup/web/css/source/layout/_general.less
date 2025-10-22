@@ -1,0 +1,47 @@
+.flex-grid{
+    display:flex;
+    display: -ms-flex;
+    display:-webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap:wrap;
+    -ms-flex-align: stretch;
+    -webkit-align-items: stretch;
+    -moz-align-items: stretch;
+    -ms-align-items: stretch;
+    -o-align-items: stretch;
+    align-items: stretch;
+}
+.abs-img{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    img {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+}
+
+.abs-frame{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    .abs-frame-inner{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+}
+@media(max-width: 767px) {
+    .columns{
+        .column{
+            &.main {
+                max-width: 100%;
+            }
+        }
+    }
+}
+

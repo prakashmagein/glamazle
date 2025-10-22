@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2022 Codazon. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Codazon_ThemeLayoutPro:etc/config.xsd">
+    <default>
+        <themelayoutpro>
+			<general>
+				<newsletter_popup>unlimited-spa-beauty-newsletter-popup</newsletter_popup>
+			</general>
+			<header>
+				<header>header-style-43</header>
+			</header>
+            <main_content>
+                <main_content>main-content-style43</main_content>
+            </main_content>
+            <footer>
+                <footer>footer-style-43</footer>
+            </footer>
+		</themelayoutpro>
+        <pages>
+            <category_view>
+                <items_per_row_1>
+					<items_1900>4</items_1900>
+					<items_1600>4</items_1600>
+					<items_1420>4</items_1420>
+					<items_1280>4</items_1280>
+					<items_980>4</items_980>
+					<items_768>3</items_768>
+					<items_480>2</items_480>
+					<items_320>2</items_320>
+					<items_0>2</items_0>
+				</items_per_row_1>
+				<items_per_row_2>
+					<items_1900>3</items_1900>
+					<items_1600>3</items_1600>
+					<items_1420>3</items_1420>
+					<items_1280>3</items_1280>
+					<items_980>3</items_980>
+					<items_768>2</items_768>
+					<items_480>2</items_480>
+					<items_320>2</items_320>
+					<items_0>2</items_0>
+				</items_per_row_2>
+				<items_per_row_3>
+					<items_1900>2</items_1900>
+					<items_1600>2</items_1600>
+					<items_1420>2</items_1420>
+					<items_1280>2</items_1280>
+					<items_980>2</items_980>
+					<items_768>1</items_768>
+					<items_480>2</items_480>
+					<items_320>2</items_320>
+					<items_0>2</items_0>
+				</items_per_row_3>
+			</category_view>
+        </pages>
+	</default>
+</config>

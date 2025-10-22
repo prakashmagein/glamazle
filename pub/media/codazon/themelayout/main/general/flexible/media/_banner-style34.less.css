@@ -1,0 +1,20 @@
+/*Banner*/
+.banner-style34{
+    .desc{
+		background: #222529;
+		color: #fff;
+		position: relative;
+		transform: translateY(-50%);
+		margin-bottom: -10%;
+		padding: 10px;
+		margin-left: 20px;
+		margin-right: 20px;
+		text-align: center;
+	}
+	.bc-title{
+		font-size: 350%;
+		font-weight: 700;
+		line-height: 1;
+		color: #fff;
+	}
+}

@@ -1,0 +1,75 @@
+/*Electronic Category*/
+
+.wrapper-adv-style-21{
+	.item{
+		position: relative; 
+		text-align: center;					
+		&:hover{						
+			.item-content-info:before{
+				.abs-opacity(1);
+			}	
+		}	
+	}
+	.item-image {
+	    display: inline-block;		    
+	    vertical-align: top;
+	}
+	.wl-icon{
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		color: @main_hover_text;
+		> *{
+			font-size: 18px;
+		}
+	}
+	.item-content-info{
+		position: absolute;
+		width: 100%;
+		left:0;
+		bottom: 0;		
+		padding: 2px 6px;
+	    text-align: center;
+		color: @main_text_normal2;
+		.abs-transition();
+		> *{
+			position: relative;
+		}
+		&:before{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #121212;
+			.abs-opacity(0.5);
+		    .abs-transition();
+		    content: '';
+		}
+		p{
+			font-size: 80%;
+			margin-bottom: 0;
+			font-weight: 300;
+		}
+		.item-title{   
+		    font-weight: 500;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			min-height: 32px;
+			text-decoration: none;
+			font-size: 120%;
+		}
+		a{
+			color: @main_text_normal2;
+			&:hover{
+				color: @main_hover_text;
+			}
+		}
+	}
+}
+@media @phone{
+	.wrapper-adv-style-21 .owl-dots{
+		display: none;
+	}
+}

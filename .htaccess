@@ -1,0 +1,39 @@
+# ================================================================
+# Magento 2 Redirect to /pub directory
+# ================================================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Prevent infinite loop
+    RewriteCond %{REQUEST_URI} !^/pub/
+
+    # Allow access to CLI scripts and composer in root
+    RewriteCond %{REQUEST_URI} !^/(bin|setup|update|dev|vendor|var|app|lib|generated|pub)/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Redirect everything else to /pub/
+    RewriteRule ^(.*)$ pub/$1 [L]
+
+    # Optional: force HTTPS
+    # RewriteCond %{HTTPS} !=on
+    # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Deny direct access to sensitive folders
+<IfModule mod_alias.c>
+    RedirectMatch 404 ^/(app|lib|var|vendor|setup|update|dev|generated)/.*
+</IfModule>
+
+# Deny hidden files (.git, .env, etc.)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Security headers (optional)
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>

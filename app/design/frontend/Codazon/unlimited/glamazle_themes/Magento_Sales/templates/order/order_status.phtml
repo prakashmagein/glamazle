@@ -1,0 +1,78 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php /** @var $block \Magento\Sales\Block\Order\Info */ ?>
+<style type="text/css">
+.order-timeline{display: block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 4rem;
+    padding: 30px;
+    border: 1px solid #e9eaec;
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 34px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 0px 4px 34px rgba(0, 0, 0, 0.08);
+    height: 100px;
+    line-height: 29px;
+        clear: both;
+}
+
+span.order-status.New.Order, span.order-status.Processing, span.order-status.Dispatched{display: none !important;}
+    .os1, .os2, .os3{color: #f9f9f9 !important;background: #1d2459;}
+        .osn, .osp{color: #f9f9f9 !important;background: linear-gradient(90deg, #1d2459, #1d2459, #1d2559,#ffffff) !important;}
+
+span.order-status.Canceled, span.order-status.Closed{
+    border: 1px solid #ef0244 !important;
+    padding: 1px 10px;
+    border-radius: 6px;
+    color: #f3f3f3 !important;
+    background: #ff194e;
+}
+a.action.track {
+    display: inline-block;
+    font-size: 14px;
+    border: 1px solid #0d0e14;
+    padding: 5px 10px;
+    border-radius: 6px;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    float: right;
+    background: #1d2559;
+}
+@media only screen and (max-width: 767px){
+.page-title span.base {font-size: 16px;}
+.page-title-wrapper h1.page-title {width: 50%;display: block;float: left;}
+.account .page-title-wrapper .order-status{font-size: 11px;padding: 1px 5px;text-transform: inherit !important;}
+.order-timeline{    padding: 15px;height: 70px;}
+}
+</style>
+<span class="order-status <?= $order_status = $block->escapeHtml($block->getOrder()->getStatusLabel()); ?>"><?= $order_status = $block->escapeHtml($block->getOrder()->getStatusLabel()); ?></span>
+
+<?php if ($order_status == "New Order") { ?>
+	<div class="order-timeline">
+		<span class="st1" ><span class="order-status os1 osn" style="background: #f3f3f3;">New Order</span>----</span>
+		<span class="st2" style="color: #c1c1c1;"><span style="color: #9c9c9c;" class="order-status">Processing </span>----</span>
+		<span class="order-status" style="color: #9c9c9c;border:1px solid #9b9b9b;">Out for delivery</span></div>
+
+<?php } ?>
+<?php if ($order_status == "Processing") { ?>
+	<div class="order-timeline">
+		<span class="st1"><span class="order-status os1">New Order</span>----</span>
+		<span class="st2" style="color: #c1c1c1;"><span class="order-status os2 osp">Processing </span>----</span>
+		<span class="order-status" style="color: #9c9c9c;border:1px solid #9b9b9b;">Out for delivery</span></div>
+
+<?php } ?>
+<?php if ($order_status == "Dispatched") { ?>
+	<div class="order-timeline">
+		<span class="st1"><span class="order-status os1">New Order</span>----</span>
+		<span class="st2"><span class="order-status os2">Processing </span>----</span>
+		<span class="order-status os3">Out for delivery</span></div>
+
+<?php }?>

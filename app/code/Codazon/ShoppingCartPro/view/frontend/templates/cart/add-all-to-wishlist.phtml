@@ -1,0 +1,103 @@
+<?php
+/**
+ * Copyright © Codazon, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+use Magento\Framework\App\ActionInterface;
+?>
+<?php
+$helper = $this->helper(\Codazon\ShoppingCartPro\Helper\Data::class);
+?>
+<?php if ($helper->enableAjaxWishlist()) : ?>
+<?php
+$dataPost = [
+    'action'    => $this->getUrl('ajaxpost/product_wishlist/moveallfromcart'),
+    'data'      => [
+        ActionInterface::PARAM_NAME_URL_ENCODED => $helper->getUrlEncoder()->encode((string)$this->getRequest()->getServer('HTTP_REFERER'))
+    ]    
+]
+?>
+<script>
+require(['jquery'], function($) {
+    var $destBtn = $('form.form-cart .actions .action.clear');
+    if (!$destBtn.length) {
+        $destBtn = $('form.form-cart .actions .action.update');
+    }
+    if ($destBtn.length) {
+        var $wishlistBtn = $('<button type="button" class="action towishlist" data-post=\'<?= json_encode($dataPost) ?>\'><span><?= __('Move all to wish list') ?></span></button>');
+        $wishlistBtn.insertBefore($destBtn);
+    }
+});
+</script>
+<?php endif ?>
+<?php if ($helper->enableAjaxUpdateInCartPage()) : ?>
+<script>
+require(['jquery', 'Magento_Checkout/js/action/get-totals', 'Magento_Ui/js/modal/confirm', 'mage/validation'], function($, getTotalsAction, confirm) {
+    var inprocess = false, update = function ($form) {
+        if (inprocess) return false;
+        inprocess = true;
+        var formData = new FormData($form[0])
+        formData.append('cdz_is_ajax', '1');
+        $.ajax({
+            url: $form.attr('action'),
+            data: formData,
+            type: 'post',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            showLoader: true,
+            success: (rs) => {
+                var dataPost = $(document).data('mageDataPost');
+                if (rs.message) dataPost.displayMessages([rs.message]);
+                if (rs.items_count == 0) {
+                    setTimeout(() => { window.location.reload(); }, 500);
+                } else {
+                    if (rs.cart_form_html) {
+                        $('form.form-cart').first().replaceWith(rs.cart_form_html).trigger('contentUpdated');
+                        if (window.themecore) window.themecore.addNumControl();
+                        var $ship = $('#co-shipping-method-form .item-options input[type=radio]:checked');
+                        if ($ship.length) {
+                            $ship.trigger('click');
+                        } else {
+                            getTotalsAction([], $.Deferred());
+                        }
+                    }
+                }
+            }
+        }).always(() => { inprocess = false; });
+    }, adjustForm = ($form) => {
+        if (!$form.hasClass('adjusted')) {
+            var that = $form.data('mageUpdateShoppingCart');
+            if (that) {
+                $form.addClass('adjusted');
+                that.onSuccess = () => {
+                    $(document).trigger('ajax:' + that.options.eventName);
+                    update($form);
+                }
+                that.submitForm = () => {};
+            }
+        }
+    }
+    $('form.form-cart input.qty').on('change', function () {
+        var $ip = $(this), $form = $ip.parents('form').first(), that = $form.data('mageUpdateShoppingCart');
+        if ($form.validation() && $form.validation('isValid')) {
+            if (that) {
+                adjustForm($form);
+                $form.trigger('submit');
+            } else {
+                update($form);
+            }
+        } else {
+            setTimeout(() => { $ip.val($ip.attr('data-item-qty')); $ip.parent().find('div.mage-error').fadeOut(500) }, 2000);
+        }
+    });
+    
+    $('form.form-cart').on('submit', function (e) {
+        adjustForm($(this));
+    });
+});
+</script>
+<?php endif ?>

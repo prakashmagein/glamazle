@@ -1,0 +1,38 @@
+<?php
+/**
+ * Copyright © 2022 Codazon, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+$childNames = $this->getChildNames();
+?>
+<?php if ($childNames) : ?>
+<?php
+$layout = $this->getLayout();
+?>
+<?php foreach ($childNames as $name) : ?>
+<?php
+$html = trim($block->getChildHtml($name));
+if (!$html) {    
+    $html = trim($block->getBlockHtml($name));
+}
+?>
+<?php
+if ($html) { ?>
+    <?php
+    $alias = str_replace('.', '-', $block->escapeHtmlAttr($layout->getElementAlias($name)));
+    $label = $block->getChildData($alias, 'title');
+    $cssClass = $block->getChildData($alias, 'css_class');
+    $id = $block->getChildData($alias, 'html_id') ? : 'pdv-box-' . $alias;
+    if ($label) : ?>
+    <div class="pdif-tab-box pd-<?= $alias ?>-wrap" id="<?= $id ?>">
+        <div class="pdif-box-title active" id="tab-label-<?= $alias ?>" role="tab"><strong class="data switch"><?= $label ?></strong></div>
+        <div class="pdif-box-content" id="<?= $alias ?>"><?= $html ?></div>
+    </div>
+    <?php else : ?>
+    <div class="pdif-box <?= $cssClass ?>" id="<?= $id ?>"><?= $html ?></div>
+    <?php endif ?>
+<?php } ?>
+<?php endforeach ?>
+<?php endif ?>

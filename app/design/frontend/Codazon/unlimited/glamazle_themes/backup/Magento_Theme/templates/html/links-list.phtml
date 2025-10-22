@@ -1,0 +1,21 @@
+<?php
+    /**
+     * Copyright © 2017 Codazon, Inc. All rights reserved.
+     * See COPYING.txt for license details.
+     */
+?>
+<?php
+$helper = $this->helper('Codazon\ThemeLayoutPro\Helper\Data');
+$linksList = $helper->getConfig('themelayoutpro/header/left_menu');
+?>
+
+<?php if ($linksList) : ?>
+<div class="links-list">
+<?php
+    $menu = $block->getLayout()->createBlock('Codazon\MegaMenu\Block\Widget\Megamenu');
+    $menu->setMenu($linksList)->setData('menu_type', 1);;
+    $menu->getMenuObject()->setData('type', 2);
+    echo $menu->toHtml();
+?>
+</div>
+<?php endif ?>

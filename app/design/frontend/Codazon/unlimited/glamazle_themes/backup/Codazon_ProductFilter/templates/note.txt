@@ -1,0 +1,10 @@
+Load more style:
+
+grid-style-03.phtml
+grid-style-12.phtml
+
+List style
+
+grid-style-10.phtml
+grid-style-14.phtml
+grid-style-20.phtml

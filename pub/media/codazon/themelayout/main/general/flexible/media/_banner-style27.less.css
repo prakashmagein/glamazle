@@ -1,0 +1,75 @@
+.banner-style27{
+	position: relative;
+    display: flex;
+    display: flex;
+    height: 100%;
+    align-content: center;
+    .item-content {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: inherit;
+        padding: 30px 0;
+        &.text-left {
+            text-align:left;
+        }
+        &.text-right {
+            text-align:right;
+        }
+    }
+	.bc-title {
+        font-weight: 600;
+        font-size: 400%;
+        margin-bottom: 20px;
+    }
+    .b-caption{
+    	font-weight: 600;
+        font-size: 200%;
+    }
+    .bc-desc {
+        font-size: 14px;
+        line-height: 25px;
+    }
+    .bc-actions {
+        margin-top: 20px;
+    }
+    .bc-actions .bc-btn {
+        display: inline-block;
+        padding: 8px 25px;
+        font-weight: 600;
+        font-size: 15px;
+        border-radius: 30px;
+        .abs-style(@btn_primary_text, @btn_primary_border, @btn_primary_background);
+        &:hover {
+            .abs-style(@btn_hover_text, @btn_hover_border, @btn_hover_background);
+        }
+    }
+    &.text-white {
+        color: #fff;
+    }
+    &.text-black {
+        color: #000;
+    }
+    .cdz-banner > a, .cdz-banner a > img {
+        display: block;
+        width: 100%;
+    }
+    @media @general_tablet {
+        .bc-title {
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        .bc-desc, .bc-btn{
+            font-size: 12px;
+            line-height: 1.1;
+        }
+        .bc-btn {
+            padding: 5px 15px;
+        }
+        .bc-actions {
+            margin-top: 10px;
+        }
+    }
+}

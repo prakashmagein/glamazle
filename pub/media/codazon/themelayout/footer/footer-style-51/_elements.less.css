@@ -1,0 +1,18 @@
+.page-footer{
+	.footer-address {
+	    color: @footer_text;
+	}
+	.f-phone{
+		a{ 
+			color: @footer_hover_text;
+		}
+	}
+	.middle-top{
+		padding: 60px 0 40px;
+	}
+	@media @phone{
+		.middle-top{
+			padding: 20px 0;
+		}
+	}
+}

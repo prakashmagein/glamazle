@@ -1,0 +1,17 @@
+.banner-style32 {
+    .feature-item{
+		display: flex;
+		.features-icon{
+			font-size: 35px;
+			margin-inline-end: 20px;
+			color: @main_text_normal;
+			.abs-transition();
+		}
+		&:hover .features-icon{
+			.abs-transform(rotateY(360deg))
+		}
+	}
+   @media @tablet_vertical {
+        
+    }
+}

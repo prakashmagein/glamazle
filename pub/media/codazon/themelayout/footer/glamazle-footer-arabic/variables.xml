@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<config>
+  <identifier>glamazle-footer-arabic</identifier>
+  <title>Glamazle-footer-arabic</title>
+  <variables>
+    <footer_background>#414b56</footer_background>
+    <footer_background_file></footer_background_file>
+    <footer_background_image_option></footer_background_image_option>
+    <footer_background_normal>#5d666f</footer_background_normal>
+    <footer_border>#5d666f</footer_border>
+    <footer_bottom_background>#414b56</footer_bottom_background>
+    <footer_font>14px</footer_font>
+    <footer_hover_text>#ffffff</footer_hover_text>
+    <footer_text>#a8aeba</footer_text>
+    <footer_text_normal>#ffffff</footer_text_normal>
+    <footer_title_font>12px</footer_title_font>
+    <footer_title_text>#ffffff</footer_title_text>
+    <footer_top_background>#414b56</footer_top_background>
+  </variables>
+  <layout_xml>&lt;body&gt;&#xD;
+    &lt;referenceBlock name="footer_links" remove="true" /&gt;&#xD;
+    &lt;referenceBlock name="copyright" remove="true" /&gt;&#xD;
+    &lt;referenceBlock name="report.bugs" remove="true" /&gt;&#xD;
+    &lt;referenceBlock name="form.subscribe" remove="true" /&gt;&#xD;
+    &lt;move element="theme-layout-footer" destination="footer-container" /&gt;&#xD;
+    &lt;block class="Magento\Store\Block\Switcher" name="footer-switch-language" template="Magento_Store::switch/languages-style-02.phtml" /&gt;&#xD;
+    &lt;block class="Magento\Directory\Block\Currency" name="footer-switch-currency" template="Magento_Directory::currency-style-02.phtml" /&gt;&#xD;
+&lt;/body&gt;</layout_xml>
+  <custom_variables/>
+  <custom_fields>
+    <version>5ef883e70134b</version>
+    <auto_detect_files>
+      <item>service/_service-block-03.less.css</item>
+    </auto_detect_files>
+    <custom_variables></custom_variables>
+    <custom_less_code></custom_less_code>
+    <custom_css_code>p.social a span.fa {font-size: 20px;padding-right: 20px;float: left;}&#xD;
+.page-footer .footer-content-bottom {padding: 25px 40px 25px;overflow: hidden;}&#xD;
+.footer-payment {float: right;}&#xD;
+.footer-social {font-size: 17px;float: left;}&#xD;
+.service-banner-style01 .item-content&gt;p{font-weight: 300;}&#xD;
+#back-top {display:none;}&#xD;
+.page-footer .newsletter-block{margin-top: 0px;}&#xD;
+.page-footer .footer-content-usp-bottom {&#xD;
+background: #ffffff;padding: 25px;margin-bottom: 20px;border: 1px solid #d8d8d8;text-align: center;-webkit-border-radius: 7px 7px 7px 7px;-moz-border-radius: 7px 7px 7px 7px;border-radius: 7px 7px 7px 7px;}&#xD;
+.page-footer .footer-content-usp-bottom .service-banner-style03 .item .item-text .item-title, .page-footer .footer-content-usp-bottom .service-banner-style03 .item .item-text .item-sub-title{color: #292929 !important;}&#xD;
+.page-footer .footer-content-usp-bottom .service-banner-style03 .item .item-icon{color: #2c3589;border: 4px solid #181e4a;}&#xD;
+.page-footer .footer-content-usp-bottom .service-banner-style03 .item .item-text .item-sub-title:before{box-shadow: 0px 0px 2px #2c3589 !important;background: #171d4a !important;}&#xD;
+.service-banner-style03 .item .item-icon:hover:before{box-shadow: 0 0 0 0 #a1a6d0;background-color: #3c4492;}&#xD;
+&#xD;
+@media only screen and (min-width: 768px){&#xD;
+.footer-content-usp-bottom .service-banner-style03 .item .item-text .item-title{    font-size: 16px !important;}&#xD;
+}&#xD;
+@media only screen and (max-width: 767px){&#xD;
+.page-footer .footer-content-usp-bottom .service-banner-style03 .item{padding-right: 5px;width: 49%;}&#xD;
+.item-sub-tmob{display:none;}&#xD;
+.page-footer .footer-content-usp-bottom{padding: 7px;}&#xD;
+.footer-payment {float: none;display: inline-block;margin-top: 10px;}&#xD;
+.footer-social {    font-size: 17px;float: none;display: inline-block;}&#xD;
+.page-footer .switcher-currency.switcher .options .switcher-trigger.action.toggle&gt;span{font-size: 12px;}&#xD;
+.footer-social .social a {padding: 15px;display: block;float: left;}&#xD;
+.cust-govt{width: 50px !important; float: none !important;margin-left: -15px;}&#xD;
+.mb-bottom-toolbar .menu-items .item&gt;a{width: 45px !important;height: 45px !important;font-size: 20px !important;}&#xD;
+.mb-bottom-toolbar .fa-shopping-cart:before{content: '\e994' !important;}&#xD;
+.mb-bottom-toolbar .menu-items .item&gt;a:hover:before{position: absolute;content: "";opacity: .8;left: 50%;top: 50%;transform: translate(-50%, -50%);height: 1px;width: 1px;z-index: 4;border: 1px solid transparent;border-radius: 1px;box-shadow: 0 0 0 0 #a1a6d0;background-color: #3c4492;transition: schdBannerPagePulseSmall 1s infinite cubic-bezier(.66, 0, 0, 1);backface-visibility: hidden;-moz-animation: schdBannerPagePulseSmall 1s infinite cubic-bezier(.66, 0, 0, 1);-ms-animation: schdBannerPagePulseSmall 1s infinite cubic-bezier(.66, 0, 0, 1);animation: schdBannerPagePulseSmall 1s infinite cubic-bezier(.66, 0, 0, 1);}&#xD;
+.service-banner-style03 .item .item-text .item-title, .service-banner-style03 .item .item-text .item-sub-title {font-size: 11px !important;}&#xD;
+.page-footer .footer-box p.h5.active:after{transform: rotate(-180deg);}&#xD;
+.page-footer .footer-box p.h5:after{content:'\f078';margin-top: -10px;font-size: 14px;}&#xD;
+}</custom_css_code>
+    <flexible_less/>
+  </custom_fields>
+  <parent>footer-style-glam</parent>
+  <content>&lt;div class="footer-style-07"&gt;&#xD;
+&lt;div class="container"&gt;&#xD;
+&lt;div class="footer-content-usp-bottom"&gt;&#xD;
+&lt;div class="service-banner-style03"&gt;&#xD;
+&lt;div class="row"&gt;&#xD;
+&lt;div class="item col-md-6 col-sm-12 col-xs-12"&gt;&#xD;
+&lt;div class="item-icon"&gt;&lt;span class="fa-truck fa"&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&#xD;
+&lt;div class="item-text"&gt;&#xD;
+&lt;p class="item-title"&gt;Free Shipping&lt;/p&gt;&#xD;
+&lt;p class="item-sub-title"&gt;On orders over AED250 within UAE&lt;/p&gt;&#xD;
+&lt;p class="item-sub-tmob" style="padding-top: 5px; position: relative; font-size: 10px; font-style: italic; color: #777777;"&gt;Excluding VAT&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="item col-md-6 col-sm-12 col-xs-12"&gt;&#xD;
+&lt;div class="item-icon"&gt;&lt;span class="fa-lock fa"&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&#xD;
+&lt;div class="item-text"&gt;&#xD;
+&lt;p class="item-title"&gt;Secure Payment&lt;/p&gt;&#xD;
+&lt;p class="item-sub-title"&gt;We value your security&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="item col-md-6 col-sm-12 col-xs-12"&gt;&#xD;
+&lt;div class="item-icon"&gt;&lt;span class="fa-check fa"&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&#xD;
+&lt;div class="item-text"&gt;&#xD;
+&lt;p class="item-title"&gt;100% Genuine Products&lt;/p&gt;&#xD;
+&lt;p class="item-sub-title"&gt;Authorized Retailers&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="item col-md-6 col-sm-12 col-xs-12"&gt;&#xD;
+&lt;div class="item-icon"&gt;&lt;span class="fa-phone fa"&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&#xD;
+&lt;div class="item-text"&gt;&#xD;
+&lt;p class="item-title"&gt;After Sales Support&lt;/p&gt;&#xD;
+&lt;p class="item-sub-title"&gt;Online consultations&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="footer-style-07"&gt;&#xD;
+&lt;div class="container"&gt;&#xD;
+&lt;div class="footer content"&gt;{{block name="footer-top" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/footer-top.phtml" child_blocks="footer-switch-language,footer-switch-currency"}}&#xD;
+&lt;div class="footer-content-middle"&gt;&#xD;
+&lt;div class="row"&gt;&#xD;
+&lt;div class="col-sm-24"&gt;&#xD;
+&lt;div class="row"&gt;&#xD;
+&lt;div class="col-sm-7"&gt;&#xD;
+&lt;div class="col-sm-22"&gt;&#xD;
+&lt;div class="footer-box"&gt;&#xD;
+&lt;p class="h5" data-cdz-toggle="#footer-content-1"&gt;About us&lt;/p&gt;&#xD;
+&lt;p id="footer-content-1" style="line-height: 1.7;"&gt;Glamazle.com is the region's online beauty and fashion destination offering makeup, beauty, fashion and perfume products for women and men at best prices.The products sold are 100 percent genuine and authentic, sourced directly from the brands.&lt;/p&gt;&#xD;
+&lt;!-- &amp;nbsp; --&gt;&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="col-sm-17"&gt;&#xD;
+&lt;div class="col-sm-7"&gt;&#xD;
+&lt;div class="footer-box"&gt;&#xD;
+&lt;p class="h5" data-cdz-toggle="#footer-content-2"&gt;Quick Links&lt;/p&gt;&#xD;
+&lt;ul id="footer-content-2" class="footer-link showhide hover-link01"&gt;&#xD;
+&lt;li&gt;&lt;a href="{{store direct_url="about-us"}}"&gt;About us&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="{{store direct_url="in-the-news"}}"&gt;In The News&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="{{store direct_url="sales/order/history"}}"&gt;My Order&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li class="last"&gt;&lt;a href="{{store direct_url="internation-shipping"}}"&gt;International Shipping&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li class="last"&gt;&lt;a href="{{store direct_url="privacy-policy"}}"&gt;Privacy Policy&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;/ul&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="col-sm-7"&gt;&#xD;
+&lt;div class="footer-box"&gt;&#xD;
+&lt;p class="h5" data-cdz-toggle="#footer-content-3"&gt;Support and services&lt;/p&gt;&#xD;
+&lt;ul id="footer-content-3" class="footer-link showhide hover-link01"&gt;&#xD;
+&lt;li&gt;&lt;a href="{{store direct_url="contact"}}"&gt;Contact us&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="{{store direct_url="faq"}}"&gt;FAQ&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="{{store direct_url="returns"}}"&gt;Return &amp;amp; Exchange&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li class="last"&gt;&lt;a href="{{store direct_url="terms-conditions"}}"&gt;Terms and Conditions&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;/ul&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="col-sm-10"&gt;&#xD;
+&lt;div class="footer-box"&gt;&#xD;
+&lt;div class="newsletter-block"&gt;&#xD;
+&lt;p class="h5" data-cdz-toggle="#footer-content-4"&gt;BE THE FIRST TO KNOW&lt;/p&gt;&#xD;
+&lt;div id="footer-content-4" class="newsletter-content"&gt;{{block class="Magento\Newsletter\Block\Subscribe" name="cdz.newsletter" template="subscribe.phtml"}}&#xD;
+&lt;p style="margin-top: 15px;"&gt;Get all the latest information on Events, Sales and Offers.&lt;/p&gt;&#xD;
+&lt;p style="margin-top: 10px;"&gt;Sign up for newsletter today.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="footer-content-bottom"&gt;&#xD;
+&lt;div class="row"&gt;&#xD;
+&lt;div class="col-sm-10"&gt;&#xD;
+&lt;div class="footer-address"&gt;Copyright. &#xA9; 2020 Glamazle.com . All rights reserved.&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="col-sm-14" style="float: right;"&gt;&#xD;
+&lt;div class="footer-social"&gt;&#xD;
+&lt;p class="social"&gt;&lt;a href="https://www.facebook.com/glamazle"&gt; &lt;span class="fa fa-facebook"&gt; &lt;!-- facebook--&gt; &lt;/span&gt; &lt;/a&gt; &lt;a href="https://www.instagram.com/glamazle/"&gt; &lt;span class="fa fa-instagram"&gt; &lt;!-- instagram --&gt; &lt;/span&gt; &lt;/a&gt; &lt;a href="https://www.youtube.com/channel/UCfngmHA2JyHSqJK1gfiUq6g/videos"&gt; &lt;span class="fa fa-youtube-play"&gt; &lt;!-- youtube --&gt; &lt;/span&gt; &lt;/a&gt;&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="cust-govt" style="float: left; width: 6%;"&gt;&lt;img class="cust-govt-img" style="margin-left: 100px; margin-top: -15px;" src="{{media url="wysiwyg/glamazle/consumer_rights_logo.png"}}" alt=""&gt;&lt;/div&gt;&#xD;
+&lt;div class="footer-payment"&gt;&lt;img class="img-responsive" src="{{media url="wysiwyg/codazon/footer-payment.png"}}" alt="Accept Payment"&gt;&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;</content>
+</config>

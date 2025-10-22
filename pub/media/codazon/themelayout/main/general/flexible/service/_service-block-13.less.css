@@ -1,0 +1,38 @@
+/*Furniture*/
+.service-banner-style13{
+	--ser13-bd: @service13_border;
+	--ser13-txt: @service13_txt;
+	--ser13-icon-bkg: @service13_icon_bkg;
+	--ser13-icon-txt: @service13_icon_txt;
+	.item{
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		padding: 10px;
+		border-radius: 50px;
+		border: 1px solid var(--ser13-bd);
+		color: var(--ser13-txt);
+		.item-icon{
+			font-size: 0;             
+			padding: 15px;
+			border-radius: 100%;
+			background: var(--ser13-icon-bkg);
+			color: var(--ser13-icon-txt);
+			width: 60px;
+			height: 60px;
+			text-align: center;
+            &:before {
+                font-size: 30px;
+            }
+		}
+		.item-content{
+			p{
+                margin:0;
+            }
+			.item-title{
+				font-size: 110%;
+				font-weight: 600;
+			}
+		}
+	}
+}

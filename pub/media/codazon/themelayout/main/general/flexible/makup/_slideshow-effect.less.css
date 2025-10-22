@@ -1,0 +1,154 @@
+/* CDZ Animation custom */
+
+@keyframes cdzFadeInUp {
+    from {
+        transform: translate3d(0,100px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes cdzFadeInUp {
+    from {
+        transform: translate3d(0,100px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@keyframes cdzZoomIn {
+	0% {
+	    opacity: 0;
+	    -webkit-transform: scale3d(.3,.3,.3);
+	    transform: scale3d(.3,.3,.3);
+	}
+	50% {
+	    opacity: 1;
+	}
+}
+@-webkit-keyframes cdzZoomIn {
+    0% {
+	    opacity: 0;
+	    -webkit-transform: scale3d(.3,.3,.3);
+	    transform: scale3d(.3,.3,.3);
+	}
+	50% {
+	    opacity: 1;
+	}
+}
+@keyframes cdzSlideInRight{
+	0% {
+	    -webkit-transform: translate3d(100%,0,0);
+	    transform: translate3d(100%,0,0);
+	    visibility: visible;
+	}
+
+	100% {
+	    -webkit-transform: translateZ(0);
+	    transform: translateZ(0);
+	}
+}
+@-webkit-keyframes cdzSlideInRight{
+	0% {
+	    -webkit-transform: translate3d(100%,0,0);
+	    transform: translate3d(100%,0,0);
+	    visibility: visible;
+	}
+
+	100% {
+	    -webkit-transform: translateZ(0);
+	    transform: translateZ(0);
+	}
+}
+@keyframes cdzSlideInLeft{
+	0% {
+	    -webkit-transform: translate3d(-100%,0,0);
+	    transform: translate3d(-100%,0,0);
+	    visibility: visible;
+	}
+	100% {
+	    -webkit-transform: translateZ(0);
+	    transform: translateZ(0);
+	}
+}
+@-webkit-keyframes cdzSlideInLeft{
+	0% {
+	    -webkit-transform: translate3d(-100%,0,0);
+	    transform: translate3d(-100%,0,0);
+	    visibility: visible;
+	}
+	100% {
+	    -webkit-transform: translateZ(0);
+	    transform: translateZ(0);
+	}
+}
+///////////Effect Main Slide/////////////
+.abs-animation(@_animation: cdzZoomIn, @_time: 500ms){
+	-webkit-animation: @_animation @_time ease-in-out;
+	-moz-animation: @_animation @_time ease-in-out;
+	animation: @_animation @_time ease-in-out;
+}
+.active {
+	.cdz-fadeinup {
+		.cdz-eff-1{
+			.abs-animation(cdzFadeInUp, 400ms);
+		}
+		.cdz-eff-2{
+			.abs-animation(cdzFadeInUp, 700ms);
+		}
+		.cdz-eff-3{
+			.abs-animation(cdzFadeInUp, 1000ms);
+		}
+		.cdz-eff-4{
+			.abs-animation(cdzFadeInUp, 1300ms);
+		}
+	}
+	.cdz-inleft {
+		.cdz-eff-1{
+			.abs-animation(cdzSlideInLeft, 400ms);
+		}
+		.cdz-eff-2{
+			.abs-animation(cdzSlideInLeft, 700ms);
+		}
+		.cdz-eff-3{
+			.abs-animation(cdzSlideInLeft, 1000ms);
+		}
+		.cdz-eff-4{
+			.abs-animation(cdzSlideInLeft, 1300ms);
+		}
+	}
+	.cdz-inright {
+		.cdz-eff-1{
+			.abs-animation(cdzSlideInRight, 400ms);
+		}
+		.cdz-eff-2{
+			.abs-animation(cdzSlideInRight, 700ms);
+		}
+		.cdz-eff-3{
+			.abs-animation(cdzSlideInRight, 1000ms);
+		}
+		.cdz-eff-4{
+			.abs-animation(cdzSlideInRight, 1300ms);
+		}
+	}
+	.cdz-zoomin {
+		.cdz-eff-1{
+			.abs-animation(cdzZoomIn, 400ms);
+		}
+		.cdz-eff-2{
+			.abs-animation(cdzZoomIn, 700ms);
+		}
+		.cdz-eff-3{
+			.abs-animation(cdzZoomIn, 1000ms);
+		}
+		.cdz-eff-4{
+			.abs-animation(cdzZoomIn, 1300ms);
+		}
+	}
+}

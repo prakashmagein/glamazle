@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="rltsquare_productreviewimages_reviewmedia" resource="default" engine="innodb" comment="RLTSqaure Product Review Images">
+        <column xsi:type="bigint" name="primary_id" unsigned="true" nullable="false" identity="true" comment="primary id of this table"/>
+        <column xsi:type="bigint" name="review_id" nullable="false" unsigned="true" comment="foreign key for review id"/>
+        <column xsi:type="text" name="media_url" nullable="false" comment="media url"/>
+         <constraint referenceId="PRIMARY" xsi:type="primary">
+            <column name="primary_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="PROVINCE_PROVINCE_ID_CITY_PROVINCE_ID" table="rltsquare_productreviewimages_reviewmedia" column="review_id" referenceTable="review" referenceColumn="review_id"/>
+    </table>
+</schema>

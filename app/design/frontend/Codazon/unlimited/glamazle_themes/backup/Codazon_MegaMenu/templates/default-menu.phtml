@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright © 2017 Codazon, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+$objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
+$helper = $this->helper('Codazon\ThemeLayoutPro\Helper\Data');
+$disableDefaultMenu = $helper->getConfig('themelayoutpro/header/disable_default_menu');
+$useAjaxMenu = (int)$helper->getConfig('themelayoutpro/header/ajax_menu');
+?>
+<div id="desk_menu-container" class="hidden-xs pos_static">
+<?php if($disableDefaultMenu): ?>
+	<?php $selectedMegamenu = $helper->getConfig('themelayoutpro/header/main_menu'); ?>
+	<nav class="cdz-navigation" data-action="navigation">
+	<?php echo $objectManager->get('Codazon\MegaMenu\Block\Widget\Megamenu')
+        ->setMenu($selectedMegamenu)
+        ->setData('use_ajax_menu', $useAjaxMenu)
+        ->toHtml(); ?>
+	</nav>
+<?php else: ?>
+	<?php echo $objectManager->get('Magento\Theme\Block\Html\Topmenu')->setTemplate('Magento_Theme::html/topmenu.phtml')->toHtml(); ?>
+<?php endif ?>
+</div>

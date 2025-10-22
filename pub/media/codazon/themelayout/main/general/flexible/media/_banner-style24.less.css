@@ -1,0 +1,34 @@
+.banner-style24{
+    position: relative;
+    .item-content {
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        .abs-transform(translateX(-50%));
+        div > * {
+            transition-delay: 0.25s;
+        }
+        .bc-btn{
+            font:  @f_h3;
+            color: #121212;
+            text-align: center;
+            padding: 20px;
+            display: block;
+           .abs-boxshadow(~'0 2px 2px #00000036');
+            text-transform: uppercase;
+            background-color: #ffffff;
+            .abs-transition();
+            &:hover {
+                .abs-style(@btn_hover_text, @btn_hover_background, @btn_hover_background);
+            }
+        }
+        .bc-actions{
+            position: relative;
+            z-index: 3;
+            min-width: 300px;
+        }
+    }
+}
+
+
+

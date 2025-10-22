@@ -1,0 +1,21 @@
+<script>
+require(['jquery'], function($) {
+    var $win = $(window), move = (fromPrefix, toPrefix) => {
+        $(`[id^="${fromPrefix}"]`).each(function() {
+            $(this).children().appendTo('#' + toPrefix + this.id.substr(fromPrefix.length));
+            $(this).empty();
+        });
+    }, desk = () => {
+        move('pdv-tablet-', 'pdv-desk-');
+    }, tablet = () => {
+        move('pdv-desk-', 'pdv-tablet-');
+    }, adapt = () => {
+        if (window.outerWidth > 1200) desk(); else tablet();
+    }
+    var $anchor = $('.pdif-box .prices-tier');
+    ($anchor.length ? $anchor  : $('.pdif-box .product-info-price')).after('<div id="pdv-tablet-cart-section"></div>');
+    adapt();
+    $win.on('cdz_window_width_changed', adapt);
+    $('.product-add-form').addClass('nice-scroll');
+});
+</script>

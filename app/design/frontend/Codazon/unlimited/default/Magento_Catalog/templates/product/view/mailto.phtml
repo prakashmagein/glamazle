@@ -1,0 +1,70 @@
+<?php
+/**
+* Copyright © 2017 Codazon, Inc. All rights reserved.
+* See COPYING.txt for license details.
+*/
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php
+$helper = $this->helper('Codazon\ThemeLayoutPro\Helper\Data');
+?>
+<?php if ($helper->getConfig('pages/product_view/display_social_links')) : ?>
+<?php
+$productHelper = $this->helper('Magento\Catalog\Helper\Output');
+$imageHelper = $this->helper('Magento\Catalog\Helper\Image');
+$_product = $this->getProduct();
+$url = urlencode($this->stripTags($block->getProductUrl($_product)));
+$desc = urlencode($this->stripTags($_product->getShortDescription()));
+$image = urlencode($imageHelper->init($_product, 'image')->setImageFile($_product->getImage())->resize(1000)->getUrl());
+$name = urlencode($this->stripTags($productHelper->productAttribute($_product, $_product->getName(), 'name')));
+$socialWidget = ['themewidgets' => [
+    'codazon.socialSharing' => [
+        'url' => $url,
+        'description' => $desc,
+        'title' => $name,
+        'media' => $image
+    ]
+]];
+?>
+<ul class="cdz-social-listing" data-mage-init='<?= json_encode($socialWidget) ?>'>
+    <li class="cdz-facebook">
+        <a data-type="facebook" rel="nofollow" href="javascript:void(0)" title="<?= __('Share on Facebook') ?>"><i class="fa fa-facebook"></i></a>
+    </li>
+    <li class="cdz-twitter">
+        <a data-type="twitter" rel="nofollow" href="javascript:void(0)" title="<?= __('Share on Twitter') ?>"><i class="fa fa-x-twitter"></i></a>
+    </li>
+    <li class="cdz-linkedin">
+        <a data-type="linkedin" rel="nofollow" href="javascript:void(0)" title="<?= __('Share on LinkedIn') ?>"><i class="fa fa-linkedin"></i></a>
+    </li>
+    <li class="cdz-pinterest">
+        <a data-type="pinterest" rel="nofollow" href="javascript:void(0)" title="<?= __('Pin this') ?>"><i class="fa fa-pinterest"></i></a>
+    </li>
+    <?php if ($this->canEmailToFriend()): ?>
+    <li class="cdz-email">
+        <a href="<?= $this->helper('Magento\Catalog\Helper\Product')->getEmailToFriendUrl($_product) ?>" title="<?= __('Email') ?>"
+       class="mailto friend" target="_blank"><i class="fa fa-envelope"></i></a>
+    </li>
+    <?php endif ?>
+    <li class="cdz-networks cdz-dropdown" data-role="cdz-dropdown">
+        <a href="javascript:void(0)" title="<?= __('Other Networks') ?>" class="cdz-dd-trigger" data-role="cdz-dd-trigger"><i class="fa fa-share-alt"></i></a>
+        <div class="cdz-dd-content">
+            <div class="cdz-dd-content-inner nice-scroll">
+                <ul class="cdz-network-list cdz-social-listing">
+                    <li class="cdz-whatsapp">
+                        <a data-type="whatsapp" rel="nofollow" href="javascript:void(0)" title="<?= __('Share on Whatsapp') ?>"><i class="fa fa-whatsapp"></i></a>
+                    </li>
+                    <li class="cdz-snapchat">
+                        <a data-type="snapchat" rel="nofollow" href="javascript:void(0)" title="<?= __('Share on Snapchat') ?>"><i class="fa fa-snapchat"></i></a>
+                    </li>
+                    <li class="cdz-reddit">
+                        <a data-type="reddit" rel="nofollow" href="javascript:void(0)" title="<?= __('Share on Reddit') ?>"><i class="fa fa-reddit"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </li>
+</ul>
+<?php endif ?>

@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<config>
+  <identifier>footer-style-50</identifier>
+  <title>Footer Style 50</title>
+  <variables>
+    <footer_background>#ffffff</footer_background>
+    <footer_background_file>/s/l/slider-10.jpg</footer_background_file>
+    <footer_background_image_option>center top no-repeat</footer_background_image_option>
+    <footer_background_normal>#f4f4f4</footer_background_normal>
+    <footer_border>#e7e7e7</footer_border>
+    <footer_bottom_background>#ffffff</footer_bottom_background>
+    <footer_font>14px</footer_font>
+    <footer_hover_text>#224229</footer_hover_text>
+    <footer_text>#a8a8a8</footer_text>
+    <footer_text_normal>#121212</footer_text_normal>
+    <footer_title_font>18px</footer_title_font>
+    <footer_title_text>#000000</footer_title_text>
+    <footer_top_background>transparent</footer_top_background>
+  </variables>
+  <layout_xml>&lt;body&gt;&#xD;
+    &lt;referenceBlock name="footer_links" remove="true" /&gt;&#xD;
+    &lt;referenceBlock name="copyright" remove="true" /&gt;&#xD;
+    &lt;referenceBlock name="report.bugs" remove="true" /&gt;&#xD;
+    &lt;referenceBlock name="form.subscribe" remove="true" /&gt;&#xD;
+    &lt;move element="theme-layout-footer" destination="footer-container" /&gt;&#xD;
+&lt;/body&gt;</layout_xml>
+  <custom_variables/>
+  <custom_fields>
+    <version>652a54d5a6655</version>
+    <auto_detect_files>
+      <item>_pe-icon-7-stroke.less.css</item>
+    </auto_detect_files>
+    <custom_variables>@service-style06-background: #ffffff;&#xD;
+@service-style06-icon-background: #f4f4f4;&#xD;
+@service-style06-icon-text: #777;&#xD;
+@service-style06-text: #777;&#xD;
+@service-style06-icon-hover-background: #60c5ba;&#xD;
+@service-style06-icon-hover-text: #ffffff;</custom_variables>
+    <custom_less_code></custom_less_code>
+    <custom_css_code></custom_css_code>
+  </custom_fields>
+  <parent></parent>
+  <content>&lt;div class="footer-style-50"&gt;&#xD;
+&lt;div class="main-footer"&gt;&#xD;
+&lt;div class="footer-content-top"&gt;&#xD;
+&lt;div class="container"&gt;&#xD;
+&lt;div class="footer content"&gt;&#xD;
+&lt;div class="footer-top-inner"&gt;&#xD;
+&lt;div class="newsletter-title"&gt;&lt;span class="title link-block"&gt;Subscribe Us &amp;amp; Get 20% Off&lt;/span&gt;&lt;span class="desc link-block"&gt;Sign up to receive the latest news and promotions&lt;/span&gt;&lt;/div&gt;&#xD;
+&lt;div class="newsletter-content"&gt;{{block class="Magento\Newsletter\Block\Subscribe" name="cdz.newsletter" template="Magento_Newsletter::subscribe.phtml"}}&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="footer-content-middle"&gt;&#xD;
+&lt;div class="container"&gt;&#xD;
+&lt;div class="footer content"&gt;&#xD;
+&lt;div class="row middle-top"&gt;&#xD;
+&lt;div class="col-sm-6"&gt;&#xD;
+&lt;div class="footer-box"&gt;&#xD;
+&lt;p class="h5" data-cdz-toggle="#footer-content-1"&gt;Top Categories&lt;/p&gt;&#xD;
+&lt;div id="footer-content-1" class="footer-link showhide hover-link01"&gt;&#xD;
+&lt;ul class="footer-link"&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;Family Tests&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;Feminine Care&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;Menopause&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;Menstrual Pain&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;Prenatal Vitamins&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;Infection Treatments&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;/ul&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="col-sm-12"&gt;&#xD;
+&lt;div class="footer-box contact-info"&gt;&#xD;
+&lt;p class="h5 visible-xs" data-cdz-toggle="#footer-content-2"&gt;About Us&lt;/p&gt;&#xD;
+&lt;div id="footer-content-2" class="showhide text-center"&gt;&#xD;
+&lt;div class="footer-about-us space-base"&gt;&#xD;
+&lt;div class="footer-logo"&gt;&#xD;
+&lt;p&gt;&lt;img src="{{media url="wysiwyg/codazon/footer_logo.jpg"}}" alt="About Us"&gt;&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;p&gt;Codazon are available around-the-clock in the event of a health emergency. Have peace of mind as life changes.&lt;/p&gt;&#xD;
+&lt;p&gt;Established since 1992. Global insurance experts. Affordable flexible plans.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="footer-social hover-iconsocial"&gt;&#xD;
+&lt;p class="social"&gt;&lt;a href="#"&gt;&lt;span class="fa fa-facebook"&gt;facebook&lt;/span&gt;&lt;/a&gt; &lt;a href="#"&gt;&lt;span class="fa fa-x-twitter"&gt;twitter&lt;/span&gt;&lt;/a&gt; &lt;a href="#"&gt;&lt;span class="fa fa-pinterest-square"&gt;pinterest&lt;/span&gt;&lt;/a&gt;&lt;a href="#"&gt;&lt;span class="fa fa-linkedin"&gt;linkedin&lt;/span&gt;&lt;/a&gt; &lt;a href="#"&gt;&lt;span class="fa fa-youtube-play"&gt;youtube-play&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="footer-payment"&gt;&lt;img class="img-responsive cdz-lazy" src="{{media url="wysiwyg/codazon/footer-payment.png"}}" alt="Accept Payment"&gt;&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="col-sm-6"&gt;&#xD;
+&lt;div class="footer-box"&gt;&#xD;
+&lt;p class="h5" data-cdz-toggle="#footer-content-3"&gt;Get to know us&lt;/p&gt;&#xD;
+&lt;ul id="footer-content-3" class="footer-link showhide hover-link01"&gt;&#xD;
+&lt;li&gt;&lt;a href="{{store url='about-us'}}"&gt;About Us&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="{{store url='privacy-policy-cookie-restriction-mode'}}"&gt;Privacy and Cookie Policy&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="{{store url='about-us'}}"&gt;About Us&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="{{store url='search/term/popular'}}"&gt;Search Terms&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="{{store url='catalogsearch/advanced'}}"&gt;Advanced Search&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="{{store url='sales/guest/form'}}"&gt;Orders and Returns&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;/ul&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="footer-content-bottom text-center"&gt;&#xD;
+&lt;div class="container"&gt;&#xD;
+&lt;div class="content-bottom"&gt;&#xD;
+&lt;div class="row"&gt;&#xD;
+&lt;div class="col-sm-24"&gt;&#xD;
+&lt;ul class="bottom-links"&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;Shopping guide&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;Company&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;About us &lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;Policies&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;Services Stores&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;a href="#"&gt;Contact us&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;/ul&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="col-sm-24"&gt;&#xD;
+&lt;div class="footer-address text-center"&gt;&#xD;
+&lt;p&gt;&#xA9; 2022 Codazon Ltd. Trademarks and brands&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;</content>
+</config>

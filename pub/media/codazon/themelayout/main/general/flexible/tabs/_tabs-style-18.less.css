@@ -1,0 +1,94 @@
+/*Inside Home*/
+.tabs-style-18 {
+    > .cdz-block-content{
+    }
+    @media @tablet_vertical {
+        .box-cate-link {
+            margin: 0 0 30px;
+            padding: 0;
+            list-style: none none;
+            text-align: center;
+            .item {
+                display: inline-block;
+                vertical-align: top;
+                margin: 0 10px 5px;
+                .tab-title {
+                    padding: 5px 10px;
+                    display: inline-block;
+                    position: relative;
+                    .abs-transition();
+                    .abs-borderradius(@btn_radius);
+                    border: 0px solid;
+                    font: @f_h5;
+                    .abs-style(@main_tab_text, @main_tab_border, @main_tab_background);
+                }
+                &:hover, &.active {
+                    .tab-title {
+                        .abs-style(@main_tab_hover_text, @main_tab_hover_border, @main_tab_hover_background);
+                    }
+                }
+            }
+        }
+    }
+    @media @phone {
+        .cdz-block-content{
+            text-align: center;
+            transform: none!important;
+        }
+        .mobile-toggle {
+            text-align: center;
+            display: inline-block !important;
+            .abs-borderradius(@btn_radius);
+            margin: 0 auto 10px;
+            padding: 5px 30px 5px 20px;
+            text-transform: uppercase;
+            font-weight: 600;
+            min-width: 120px;
+            .abs-calc-left(~'(100% - 120px)/2');
+            border: 2px solid;
+            .abs-style(@main_tab_hover_text, @main_tab_hover_border, @main_tab_hover_background);
+            
+            .rtl-layout & {
+                left: auto;
+                .abs-calc-right(~'(100% - 120px)/2');
+                padding: 5px 20px 5px 30px;
+            }
+            &:after {
+                .abs-iconfont('\f107', 14px);
+                position: absolute;
+                margin: 0 5px;
+            }
+            &.open {
+                &:after {
+                    .abs-transform(rotate(180deg))
+                }
+            }
+            &:focus, &:active ,&:hover{
+                color: @main_tab_hover_text;
+            }
+        }
+        ul.box-cate-link {
+            position: absolute;
+            background: #ffffff;
+            z-index: 5;
+            width: 200px;
+            text-align: left;
+            border: 1px solid @main_border;
+            .abs-calc-left(~'(100% - 200px)/2');
+            li.item {
+                display: block;
+                width: 100%;
+                border: 0;
+                margin: 0;
+                text-transform: capitalize;
+                padding: 5px 10px;
+                .abs-borderradius(0);
+                &:hover, &.active {
+                    .tab-title {
+                        color: @main_tab_hover_text;
+                    }
+                }
+            }
+        }
+    }
+}

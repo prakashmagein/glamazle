@@ -1,0 +1,56 @@
+
+.banner-style22{
+    .item-content {
+        position: absolute;
+		z-index: 1;
+        bottom: 60px;
+        left: 10px;
+		right:10px;
+		text-align: center;
+		.bc-sub-title{
+			font:  @f_h2;
+			font-weight: 400;
+			margin-bottom: 40px;
+		}
+		.bc-title{
+			font-size: 450%;
+			line-height: 1;
+			text-transform: uppercase;
+			margin-bottom: 40px;
+		}
+        .bc-btn{
+            font:  @f_h3;
+            color: @btn_primary_text;
+            background-color: @btn_primary_background;
+            text-align: center;
+            padding: 12px 20px;
+			min-width: 200px;
+            display: block;
+			text-transform: uppercase;
+            display: inline-block;
+			transition: all ease .4s;
+			&:hover{
+				border-color: @btn_hover_border;
+				color: @btn_hover_text;
+				background-color: @btn_hover_background;
+			}
+        }
+    }
+	@media @general_tablet_down {
+		.item-content {
+			bottom: 20px;
+			.bc-sub-title{
+				font-size:  100%;
+				margin-bottom: 10px;
+			}
+			.bc-title{
+				font-size: 130%;
+				margin-bottom: 10px;
+			}
+			.bc-btn{
+				padding: 10px 20px;
+			}
+		}
+	}
+
+}

@@ -1,0 +1,103 @@
+.post-list-style25 {
+    --i-post-logo: url("codazon/themelayout/images/org-logo.jpg");
+	.owl-item:nth-child(2n-1) .item-inner {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.owl-item:nth-child(2n) .item-inner .post-top{
+		&:before{
+			content:"";
+			background: transparent var(--i-post-logo) 0 0 no-repeat;
+			width: 180px;
+			height: 180px;
+			display: inline-block;
+			position: absolute;
+			left: -100px;
+			top: 26%;
+			background-size: contain;
+			z-index: 1;
+			border-radius: @main_box_radius;
+		}
+	}
+    .post-top{
+        position: relative;
+        background: #fff;
+		padding-bottom: 20px;
+		.abs-img{
+			border-radius: @main_box_radius;
+		}
+        .post-img:after{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            transform: scale(0);
+            opacity: 0;
+            left: 0;
+            top: 0;
+            content: '';
+            transition: all ease 400ms;
+        }
+    }
+    .post-img img {
+        transition: all ease 400ms;
+    }
+    .post-item:hover {
+        .share-buttons{
+            opacity: 1;
+            visibility: visible;
+        }
+        .post-img img {
+            transform: scale(1.1);
+        }
+        .post-img:after {
+            opacity: 0.5;
+            transform: scale(1);
+        }
+    }
+    .post-date{
+        &:before{
+            .abs-iconfont('\f073', 13px);
+            vertical-align: baseline;
+            margin: 0 7px 0 0;
+            .rtl-layout & {
+                margin: 0 0 0 7px;
+            }
+        }
+    }
+    .post-bottom-inner {
+		padding-bottom: 20px;
+    }
+    .post-title{
+        margin-bottom: 10px;
+		font: @f_h3;
+        line-height: 1.2;
+        @media @phone {
+            font-size: 14px;
+        }
+		a{
+			.abs-link(@main_title_text, @main_hover_text);
+		}
+    }
+    a.post-category {
+        font: @f_note;
+        font-size: 14px;
+        .abs-link(@main_title_text, @main_hover_text);
+        margin-bottom: 5px;
+        display: block
+    }
+    .post-author{
+        margin-bottom: 5px;
+    }
+    .post-date{
+        color: @main_text_normal;
+    }
+    @media @phone {
+        .owl-item .post-item {
+            padding-inline: 5px;            
+        }
+        .owl-item:nth-child(2n) .item-inner .post-top{
+            &:before{display: none;}
+        }
+    }
+}

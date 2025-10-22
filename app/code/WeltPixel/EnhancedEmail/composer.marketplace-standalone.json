@@ -1,0 +1,15 @@
+{
+  "name": "weltpixel/m2-weltpixel-enhanced-email",
+  "description": "WeltPixel Enhanced Email module",
+  "version": "1.9.7",
+  "type": "metapackage",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "require": {
+    "weltpixel/m2-weltpixel-backend": "*",
+    "weltpixel/m2-weltpixel-enhanced-email": "*",
+    "magento/module-catalog": "*"
+  }
+}

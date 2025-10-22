@@ -1,0 +1,13 @@
+@media @tablet_vertical {
+    .page-header{
+        background: @header_background;
+		.sticky-menu:not(.active){
+			margin-top:0;
+			margin-bottom:0;			
+		}
+		.cdz-horizontal-menu .groupmenu li.level0>a.menu-link{
+		    text-transform: none;
+		}
+
+	}
+}

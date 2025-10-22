@@ -1,0 +1,73 @@
+/*Grocery and Gourmet*/
+.service-banner-style12{
+	.item {	 
+	    padding: 70px 20px;
+	    font-size: 14px;
+		flex-direction: column;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		color: @service-style12-text;
+	    &:hover{
+	    	.item-icon span{
+	    		background: @service-style12-icon-hover-background;
+	    		color: @service-style12-icon-hover-text;
+				border-color: @service-style12-icon-hover-border;
+	    	}
+	    }
+		.service-desc{
+			margin-top: 12px;
+		}
+		.service-title{
+			font-weight: 600;
+			color: @service-style12-text02;
+		}
+		.service-subtitle{
+			font-size: 105%;
+			font-weight: 500;
+			margin-bottom: 15px;
+		}
+	}
+	
+	.item-icon {
+		span{
+			width: 80px;
+			height: 80px;
+			line-height: 80px;
+			text-align: center;
+			background: @service-style12-icon-background;
+			color: @service-style12-icon-text;
+			border: 1px solid @service-style12-icon-border;
+			border-radius: 100%;
+			float: none;
+			margin: 0;
+			.abs-transition();
+			font-size: 0;
+			&:before{
+			  font-size: 30px;
+			  line-height: 80px;
+			}
+		}
+	}
+	@media @tablet-strict_small{
+		.item{
+			padding: 40px 10px;
+			.item-icon span{
+				width: 50px;
+    			height: 50px;
+    			line-height: 50px;
+				&:before{
+					font-size: 20px;
+					line-height: 50px;
+				}
+			}
+		}
+	}
+	@media @phone{
+		.item{
+			padding: 20px 10px;
+			border-top: 0;
+			text-align: center;
+		}
+	}	
+}

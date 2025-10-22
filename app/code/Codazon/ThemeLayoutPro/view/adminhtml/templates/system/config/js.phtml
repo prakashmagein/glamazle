@@ -1,0 +1,13 @@
+<?php
+/**
+ * Copyright © Codazon, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+if (class_exists('\Magento\Config\ViewModel\CountryFilter')) {
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $this->setData('countryFilter', $objectManager->get(\Magento\Config\ViewModel\CountryFilter::class));
+}
+include $this->getTemplateFile('Magento_Config::system/config/js.phtml');
+?>

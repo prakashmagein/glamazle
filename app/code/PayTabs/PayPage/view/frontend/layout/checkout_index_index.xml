@@ -1,0 +1,251 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <body>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="steps" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="billing-step" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+
+                                                <item name="payment" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="renders" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <!-- merge payment method renders here -->
+                                                                <item name="paypage-all" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/all</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="all" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-creditcard" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/creditcard</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="creditcard" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-stcpay" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/stcpay</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="stcpay" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-applepay" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/applepay</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="applepay" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-omannet" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/omannet</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="omannet" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-mada" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/mada</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="mada" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-sadad" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/sadad</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="sadad" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-fawry" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/fawry</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="fawry" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-knet" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/knet</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="knet" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-knetdebit" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/knetdebit</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="knetdebit" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-knetcredit" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/knetcredit</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="knetcredit" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-amex" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/amex</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="amex" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-valu" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/valu</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="valu" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-meeza" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/meeza</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="meeza" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-meezaqr" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/meezaqr</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="meezaqr" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-unionpay" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/unionpay</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="unionpay" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-paypal" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/paypal</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="paypal" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-nbe-installment" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/nbe_installment</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="installment" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-urpay" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/urpay</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="urpay" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-forsa" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/forsa</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="forsa" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-aman" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/aman</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="aman" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-touchpoints" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/touchpoints</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="touchpoints" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <item name="paypage-tabby" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">PayTabs_PayPage/js/view/payment/tabby</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="tabby" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <!-- item-renderer -->
+                                                            </item>
+                                                        </item>
+
+                                                    </item>
+                                                </item>
+
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

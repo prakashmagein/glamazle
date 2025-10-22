@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<config>
+  <identifier>footer-style-41</identifier>
+  <title>Footer Style 41</title>
+  <variables>
+    <footer_background>#ffffff</footer_background>
+    <footer_background_file>/b/a/banner-bg3.jpg</footer_background_file>
+    <footer_background_image_option>top left</footer_background_image_option>
+    <footer_background_normal>#ed2d34</footer_background_normal>
+    <footer_border>#dfdfdf</footer_border>
+    <footer_bottom_background>#ffffff</footer_bottom_background>
+    <footer_font>16px</footer_font>
+    <footer_hover_text>#ed2d34</footer_hover_text>
+    <footer_text>#464646</footer_text>
+    <footer_text_normal>#ffffff</footer_text_normal>
+    <footer_title_font>30px</footer_title_font>
+    <footer_title_text>#464646</footer_title_text>
+    <footer_top_background>#ffffff</footer_top_background>
+  </variables>
+  <layout_xml>&lt;body&gt;&#xD;
+&lt;referenceBlock name="footer_links" remove="true" /&gt;&#xD;
+&lt;referenceBlock name="copyright" remove="true" /&gt;&#xD;
+&lt;referenceBlock name="report.bugs" remove="true" /&gt;&#xD;
+&lt;referenceBlock name="form.subscribe" remove="true" /&gt;&#xD;
+&lt;move element="theme-layout-footer" destination="footer-container" /&gt;&#xD;
+&lt;/body&gt;</layout_xml>
+  <custom_variables/>
+  <custom_fields>
+    <version>652a54d5957c6</version>
+    <custom_variables/>
+    <custom_less_code/>
+    <custom_css_code/>
+  </custom_fields>
+  <parent></parent>
+  <content>	&lt;div class="footer-style-41"&gt;&#xD;
+		&lt;div class="footer content"&gt;&#xD;
+			&lt;div class="container"&gt;&#xD;
+				&lt;div class="cdz-block-title"&gt;&lt;p class="b-title h1"&gt;Questions?&lt;span&gt;Let's Get In Touch&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&#xD;
+				&lt;div class="row"&gt;&#xD;
+					&lt;div class="footer-content-left"&gt;&#xD;
+						&lt;div class="col-xs-24 col-sm-12"&gt;&#xD;
+							&lt;div class="footer-box newsletter"&gt;&#xD;
+								&lt;p class="h4" data-cdz-toggle="#footer-content-2"&gt;Warehouse Location&lt;/p&gt;&#xD;
+								&lt;div id="footer-content-2" class="showhide"&gt;&#xD;
+									&lt;p class="des"&gt;We deliver seamless product at  affordable prices that any quality conscious consumer will appreciate.&lt;/p&gt;&#xD;
+									&lt;ul class="footer-link"&gt;&#xD;
+										&lt;li&gt;&lt;i aria-hidden="true" class="fa fa-map-marker"&gt;&amp;nbsp;&lt;/i&gt; Montergade 19, Copenhagen, Denmark 58643, US&lt;/li&gt;&#xD;
+										&lt;li&gt;&lt;i aria-hidden="true" class="fa fa-phone"&gt;&amp;nbsp;&lt;/i&gt; +123 456 7xxx&lt;/li&gt;&#xD;
+										&lt;li&gt;&lt;i aria-hidden="true" class="fa fa-paper-plane"&gt;&amp;nbsp;&lt;/i&gt; support@infinit.com&lt;/li&gt;&#xD;
+									&lt;/ul&gt;&#xD;
+									&lt;div class="footer-social"&gt;&#xD;
+										&lt;p class="h4"&gt;Stay Connected&lt;/p&gt;&#xD;
+										&lt;p class="social"&gt;&lt;a href="#"&gt; &lt;span class="fa fa-facebook"&gt; &lt;!-- facebook--&gt; &lt;/span&gt; &lt;/a&gt; &lt;a href="#"&gt; &lt;span class="fa fa-x-twitter"&gt; &lt;!-- twitter --&gt; &lt;/span&gt; &lt;/a&gt; &lt;a href="#"&gt; &lt;span class="fa fa-pinterest-p"&gt; &lt;!-- pinterest --&gt; &lt;/span&gt; &lt;/a&gt; &lt;a href="#"&gt; &lt;span class="fa fa-instagram"&gt; &lt;!-- instagram --&gt; &lt;/span&gt; &lt;/a&gt; &lt;a href="#"&gt; &lt;span class="fa fa-snapchat-ghost"&gt; &lt;!-- snapchat --&gt; &lt;/span&gt; &lt;/a&gt;&lt;/p&gt;&#xD;
+									&lt;/div&gt;&#xD;
+								&lt;/div&gt;&#xD;
+							&lt;/div&gt;&#xD;
+						&lt;/div&gt;&#xD;
+					&lt;/div&gt;&#xD;
+					&lt;div class="footer-content-right"&gt;&#xD;
+						&lt;div class="col-xs-24 col-sm-12"&gt;&#xD;
+							&lt;div class="footer-box newsletter"&gt;&#xD;
+								&lt;p class="h4 newsletter-title" data-cdz-toggle="#footer-content-1"&gt;Subscribe Us&lt;/p&gt;&#xD;
+								&lt;div id="footer-content-1" class="showhide"&gt;&#xD;
+									&lt;p class="des"&gt;Now with a voucher: Join our newsletter, get 10$ off your first order and stay up to date on&lt;/p&gt;&#xD;
+									&lt;ul class="footer-link"&gt;&#xD;
+										&lt;li&gt;&#x2713; special offers and promotions&lt;/li&gt;&#xD;
+										&lt;li&gt;&#x2713; daily deals&lt;/li&gt;&#xD;
+										&lt;li&gt;&#x2713; new releases in all categories.&lt;/li&gt;&#xD;
+									&lt;/ul&gt;&#xD;
+									&lt;div class="newsletter-content"&gt;{{block class="Magento\Newsletter\Block\Subscribe" name="cdz.newsletter" template="Magento_Newsletter::subscribe.phtml"}}&lt;/div&gt;&#xD;
+								&lt;/div&gt;&#xD;
+							&lt;/div&gt;&#xD;
+						&lt;/div&gt;&#xD;
+					&lt;/div&gt;&#xD;
+				&lt;/div&gt;&#xD;
+			&lt;/div&gt;&#xD;
+		&lt;/div&gt;&#xD;
+	&lt;div class="footer-bottom text-center"&gt;&#xD;
+	&lt;div class="container"&gt;&#xD;
+	&lt;ul class="bottom-links"&gt;&#xD;
+	&lt;li&gt;&lt;a href="#"&gt;Shopping guide&lt;/a&gt;&lt;/li&gt;&#xD;
+	&lt;li&gt;&lt;a href="#"&gt;Company&lt;/a&gt;&lt;/li&gt;&#xD;
+	&lt;li&gt;&lt;a href="#"&gt;About us &lt;/a&gt;&lt;/li&gt;&#xD;
+	&lt;li&gt;&lt;a href="#"&gt;Policies&lt;/a&gt;&lt;/li&gt;&#xD;
+	&lt;li&gt;&lt;a href="#"&gt;Services Stores&lt;/a&gt;&lt;/li&gt;&#xD;
+	&lt;li&gt;&lt;a href="#"&gt;Contact us&lt;/a&gt;&lt;/li&gt;&#xD;
+	&lt;/ul&gt;&#xD;
+	&lt;/div&gt;&#xD;
+	&lt;/div&gt;&#xD;
+	&lt;/div&gt;</content>
+</config>

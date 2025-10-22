@@ -1,0 +1,177 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+use Magento\Review\Block\Product\View\ListView;
+
+/**
+ * @var ListView $block
+ * @var SecureHtmlRenderer $secureRenderer
+ * @var Escaper $escaper
+ */
+$helper = $this->helper(\Codazon\Core\Helper\Data::class);
+$_items = $block->getReviewsCollection()->getItems();
+$format = $block->getDateFormat() ?: \IntlDateFormatter::SHORT;
+$mediaDirectoryPath = rtrim($helper->getStoreManager()->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'review_images', '/');
+$reviewMediaFactory = $helper->getObjectManager()->get(\RLTSquare\ProductReviewImages\Model\ReviewMediaFactory::class);
+$enableReviewImage = (bool)$helper->getConfig('themelayoutpro/catalog_review/enable_review_image');
+?>
+<?php if (count($_items)): ?>
+    <?php if ($enableReviewImage) : ?>
+    <div class="block rv-img-all cdz-rv-att hidden" id="customer-review-imgs">
+        <div class="rv-img-title"><?= $escaper->escapeHtml(__('Customer Images')) ?></div>
+        <div class="review-media-value rv-imgs base-slider sl-sm-nav sl-static-nav sl-dis-nav mb-nav" data-review="0"></div>
+    </div>
+    <?php endif ?>
+    <div class="block review-list" id="customer-reviews">
+        <?php if (!$block->getHideTitle()): ?>
+            <div class="block-title">
+                <strong><?= $escaper->escapeHtml(__('Customer Reviews')) ?></strong>
+            </div>
+        <?php endif ?>
+        <div class="block-content">
+            <div class="toolbar review-toolbar">
+                <?= $block->getChildHtml('toolbar') ?>
+            </div>
+            <ol class="items review-items">
+                <?php foreach ($_items as $_review): ?>
+                    <li class="item review-item" itemscope itemprop="review" itemtype="http://schema.org/Review">
+                        <div class="review-title" itemprop="name">
+                            <?= $escaper->escapeHtml($_review->getTitle()) ?>
+                        </div>
+                        <?php if (count($_review->getRatingVotes())): ?>
+                            <div class="review-ratings">
+                                <?php foreach ($_review->getRatingVotes() as $_vote): ?>
+                                    <div class="rating-summary item"
+                                         itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                                        <span class="label rating-label">
+                                            <span><?= $escaper->escapeHtml($_vote->getRatingCode()) ?></span>
+                                        </span>
+                                        <div class="rating-result"
+                                             id="review_<?= /* @noEscape */ $_review->getReviewId()
+                                                . '_vote_'
+                                                . $_vote->getVoteId() ?>"
+                                             title="<?= $escaper->escapeHtmlAttr($_vote->getPercent()) ?>%">
+                                            <meta itemprop="worstRating" content="1"/>
+                                            <meta itemprop="bestRating" content="100"/>
+                                            <span>
+                                                <span itemprop="ratingValue">
+                                                    <?= $escaper->escapeHtml($_vote->getPercent()) ?>%
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <?= /* @noEscape */ $secureRenderer->renderStyleAsTag(
+                                            'width:' . $_vote->getPercent() . '%',
+                                            'div#review_' . $_review->getReviewId()
+                                            . '_vote_' . $_vote->getVoteId() . ' span'
+                                        ) ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+                        <div class="review-content-container">
+                            <div class="review-content" itemprop="description">
+                                <?= /* @noEscape */ nl2br($escaper->escapeHtml($_review->getDetail())) ?>
+                            </div>
+                            <div class="review-details">
+                                <p class="review-author">
+                                    <span class="review-details-label">
+                                        <?= $escaper->escapeHtml(__('Review by')) ?>
+                                    </span>
+                                    <strong class="review-details-value" itemprop="author">
+                                        <?= $escaper->escapeHtml($_review->getNickname()) ?>
+                                    </strong>
+                                </p>
+                                <p class="review-date">
+                                    <span class="review-details-label">
+                                        <?= $escaper->escapeHtml(__('Posted on')) ?>
+                                    </span>
+                                    <time class="review-details-value" itemprop="datePublished"
+                                          datetime="<?= $escaper->escapeHtmlAttr($block->formatDate(
+                                              $_review->getCreatedAt(),
+                                              $format
+                                          )) ?>">
+                                        <?= $escaper->escapeHtml(
+                                            $block->formatDate(
+                                                $_review->getCreatedAt(),
+                                                $format
+                                            )
+                                        ) ?>
+                                    </time>
+                                </p>
+                            </div>
+                        </div>
+                        <?php if ($enableReviewImage) : ?>
+                        <?php
+                        $reviewMediaCollection = $reviewMediaFactory->create()->getCollection()->addFieldToFilter('review_id', $_review->getReviewId());
+                        ?>
+                        <?php if (count($reviewMediaCollection)) : ?>
+                        <div class="review-attachments cdz-rv-att">
+                            <p class="rv-att-label"><?= __('Attachments') ?></p>
+                            <div class="review-media-value rv-imgs" data-review='<?= $_review->getReviewId() ?>'>
+                            <?php foreach ($reviewMediaCollection as $m) { ?>
+                            <div class="rv-img item" data-role="image">
+                                <div class="abs-img rv-img-wrap">
+                                    <img class="rv-image" data-role="image-element" 
+                                    data-lazysrc="<?php echo $mediaDirectoryPath . $m->getMediaUrl(); ?>" alt="<?= __('Image') ?>">
+                                </div>
+                            </div>
+                            <?php } ?>
+                            </div>
+                        </div>
+                        <?php endif ?>
+                        <?php endif ?>
+                    </li>
+                <?php endforeach; ?>
+            </ol>
+            <div class="toolbar review-toolbar">
+                <?= $block->getChildHtml('toolbar') ?>
+            </div>
+        </div>
+    </div>
+    <?php if ($enableReviewImage) : ?>
+    <div id="review-image-modal" style="display:none;"></div>
+    <script>
+        require(['jquery','Magento_Ui/js/modal/modal', 'js/theme-widgets'],
+            function ($, modal) {
+                if ($(".rv-img.item").length) {
+                    var $imgList = $('#customer-review-imgs').removeClass('hidden').find('.rv-imgs');
+                    $(".review-list .rv-img.item").each((i, img) => {
+                        let $img = $(img).clone().appendTo($imgList), src = $img.find('img').attr('data-src');
+                        if (src) $img.find('img').attr('data-lazysrc', src);
+                    });
+                    $.codazon.flexibleSlider({sliderConfig: {autoWidth: true, dots: false, nav: true, margin: 10, mouseDrag: false}}, $imgList);
+                }
+                $("#review-image-modal").modal({
+                    clickableOverlay: true,
+                    buttons: [],
+                    responsive: true,
+                    modalClass:'modal-zoom cdz-rv-img-md'
+                });
+                $(".rv-image").on('click', function () {
+                    var $img = $(this), src = $img.attr('src'), $pr = $img.parents('[data-review]').first(), id = $pr.data('review'),
+                    $prc = $("#review-image-modal .list-" + id);
+                    if (!$prc.length) {
+                        $prc = $pr.clone().addClass('base-slider sl-static-nav mb-nav list-' + id);
+                        $("#review-image-modal").append($prc);
+                        $prc.find('.abs-img').removeClass('abs-img');
+                        $.codazon.flexibleSlider({sliderConfig: {items: 1, dots: false, nav: true, autoHeight: true}}, $prc);
+                    }
+                    $prc.show().siblings().hide();
+                    $("#review-image-modal").modal('openModal');
+                    $prc.find('.rv-image').each((i, el) => {
+                        if ($(el).attr('src') == src) {
+                            $prc.trigger('to.owl.carousel', [i, 0]);
+                            return false;
+                        }
+                    });
+                });
+            }
+        );
+    </script>
+    <?php endif ?>
+<?php endif; ?>

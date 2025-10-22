@@ -1,0 +1,137 @@
+{
+    "name": "magento/project-community-edition",
+    "description": "eCommerce Platform for Growth (Community Edition)",
+    "type": "project",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "magento/magento-composer-installer": true,
+            "magento/inventory-composer-installer": true,
+            "laminas/laminas-dependency-plugin": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "magento/composer-dependency-version-audit-plugin": true,
+            "magento/composer-root-update-plugin": true
+        }
+    },
+    "require": {
+        "amasty/pgrid": "^1.10",
+        "amasty/promo": "^2.11",
+        "checkoutcom/magento2": "*",
+        "flurrybox/enhanced-privacy": "^2.1",
+        "laminas/laminas-serializer": "^2.13",
+        "magefan/module-blog": "*",
+        "magento/composer-dependency-version-audit-plugin": "~0.1",
+        "magento/composer-root-update-plugin": "~1.1",
+        "magento/product-community-edition": "2.4.3-p1",
+        "mageplaza/magento-2-seo-extension": "^4.1",
+        "mageplaza/magento-2-social-login": "^4.1",
+        "mageplaza/module-cron-schedule": "^4.0",
+        "mageplaza/module-delete-orders": "^4.0",
+        "mageplaza/module-google-tag-manager": "^4.2",
+        "mageplaza/module-order-export": "^4.1",
+        "mageplaza/module-product-feed": "^4.2",
+        "mageplaza/module-smtp": "^4.7",
+        "mageworx/module-searchsuiteautocomplete": "^2.1",
+        "mailchimp/mc-magento2": "^103.4",
+        "mirasvit/module-cache-warmer": "*",
+        "mirasvit/module-optimize": "*",
+        "mirasvit/module-related": "*",
+        "mirasvit/module-search-ultimate": "*",
+        "tamara-solution/magento": "^2.11",
+        "webshopapps/module-matrixrate": "^20.2"
+    },
+    "require-dev": {
+        "allure-framework/allure-phpunit": "~1.4",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+        "friendsofphp/php-cs-fixer": "~2.18.1",
+        "lusitanian/oauth": "~0.8.10",
+        "magento/magento-coding-standard": "*",
+        "magento/magento2-functional-testing-framework": "^3.0",
+        "pdepend/pdepend": "~2.7.1",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "phpmd/phpmd": "^2.8.0",
+        "phpstan/phpstan": "^0.12.77",
+        "phpunit/phpunit": "^9",
+        "sebastian/phpcpd": "^6.0.3",
+        "squizlabs/php_codesniffer": "~3.5.4",
+        "symfony/finder": "^5.2"
+    },
+    "conflict": {
+        "gene/bluefoot": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Magento\\Framework\\": "lib/internal/Magento/Framework/",
+            "Magento\\Setup\\": "setup/src/Magento/Setup/",
+            "Magento\\": "app/code/Magento/"
+        },
+        "psr-0": {
+            "": [
+                "app/code/",
+                "generated/code/"
+            ]
+        },
+        "files": [
+            "app/etc/NonComposerComponentRegistration.php"
+        ],
+        "exclude-from-classmap": [
+            "**/dev/**",
+            "**/update/**",
+            "**/Test/**"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Magento\\Sniffs\\": "dev/tests/static/framework/Magento/Sniffs/",
+            "Magento\\Tools\\": "dev/tools/Magento/Tools/",
+            "Magento\\Tools\\Sanity\\": "dev/build/publication/sanity/Magento/Tools/Sanity/",
+            "Magento\\TestFramework\\Inspection\\": "dev/tests/static/framework/Magento/TestFramework/Inspection/",
+            "Magento\\TestFramework\\Utility\\": "dev/tests/static/framework/Magento/TestFramework/Utility/",
+            "Magento\\PhpStan\\": "dev/tests/static/framework/Magento/PhpStan/"
+        }
+    },
+    "version": "2.3.5-p1",
+    "minimum-stability": "stable",
+    "repositories": {
+        "0": {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        },
+        "mirasvit-gpo2": {
+            "type": "composer",
+            "url": "https://48947:BLW63V5CIH@packages.mirasvit.com/48947:BLW63V5CIH/"
+        },
+        "mirasvit-tes2": {
+            "type": "composer",
+            "url": "https://49208:1P9NHC5BYK@packages.mirasvit.com/49208:1P9NHC5BYK/"
+        },
+        "mirasvit-arp2": {
+            "type": "composer",
+            "url": "https://54218:4LPQIJ32RV@packages.mirasvit.com/54218:4LPQIJ32RV/"
+        },
+        "mirasvit-fpc2": {
+            "type": "composer",
+            "url": "https://48554:VIJBUMQREA@packages.mirasvit.com/48554:VIJBUMQREA/"
+        },
+        "mirasvit-ssu2": {
+            "type": "composer",
+            "url": "https://35035:BQUPS81N6I@packages.mirasvit.com/35035:BQUPS81N6I/"
+        },
+        "mageplaza": {
+            "type": "composer",
+            "url": "https://repo.mageplaza.com"
+        },
+        "amasty": {
+            "type": "composer",
+            "url": "https://composer.amasty.com/community/"
+        }
+    },
+    "extra": {
+        "magento-force": "override"
+    }
+}

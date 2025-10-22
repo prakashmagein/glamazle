@@ -1,0 +1,90 @@
+/*banner hover border*/
+.banner-style23{
+    .scale-effect();
+    position: relative;
+    .item-content {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        color: inherit;
+        padding: 70px 10%;
+        &.text-left{
+            text-align:left;
+        }
+        &.text-right{
+            text-align:right;
+        }
+        &.content-middle{
+            justify-content: center;
+
+        }
+        &.content-end{
+            justify-content: flex-end;
+        }
+        &.bc-white-color{
+            .bc-subtitle,
+            .bc-title,
+            .bc-desc{
+                color:  #ffffff;
+            }
+        }
+        .bc-subtitle,
+        .bc-title{
+            margin-bottom: 15px;
+        }
+        .bc-title span{
+            text-decoration: underline;
+        }
+        .bc-actions {
+            display: flex;
+            gap: 20px 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn.action {
+            border: 2px solid;
+            .abs-borderradius(0);
+            .abs-transition();
+            padding: 15px 15px;
+            min-height: auto;
+            text-transform: uppercase;
+            font:  @f_h6;
+            display: inline-block;
+            vertical-align: top;
+            .abs-style(#ffffff, #ffffff , transparent);
+            &.primary{
+                .abs-style(@btn_hover_background, @btn_hover_text, @btn_hover_text);
+                &:focus,
+                &:active,
+                &:hover{
+                    .abs-style(@btn_hover_text, @btn_hover_background, @btn_hover_background);
+                }
+            }
+            &:focus,
+            &:active,
+            &:hover{
+                .abs-style(@btn_hover_text, @btn_hover_background, @btn_hover_background);
+            }
+            @media @tablet_vertical {
+                //margin: 0 20px;
+                min-width: 170px;
+            }
+        }
+        
+    }
+    .bc-primary-color {color:@main_hover_text}
+    @media @general_tablet {
+        .item-content {
+            padding: 15px 10%;
+        }
+        .bc-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .bc-desc, .bc-btn, .bc-subtitle{
+            font-size: 13px;
+        }
+
+    }
+}

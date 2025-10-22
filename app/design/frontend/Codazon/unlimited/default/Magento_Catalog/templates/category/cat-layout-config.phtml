@@ -1,0 +1,42 @@
+<?php
+/**
+ * Copyright © 2022 Codazon, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+$helper = $this->helper(\Codazon\ThemeLayoutPro\Helper\Data::class);
+if ($maxDescHeight = (int)$helper->getConfig('pages/category_view/layout/desc_tab_max_height')) {
+$descSelector = $helper->getConfig('pages/category_view/layout/desc_selector') ? : '.category-view .category-description';
+?>
+<script>
+require(['jquery'], function($) {
+    var t, collapseText = function ($wrap, maxHeight, viewMoreText, viewLessText) {
+        var $panel = $('<div>').addClass('panel-toggle-wrap'),
+        $outer = $('<div>').addClass('content-outer'), $inner = $('<div>').addClass('content-inner'),
+        $toolbar = $('<div>').addClass('content-toolbar'),
+        $toggle = $('<div>').addClass('content-toggle').html(viewMoreText);
+        $wrap.children().appendTo($inner);
+        $inner.appendTo($outer);       
+        $outer.appendTo($panel).css({maxHeight: maxHeight, overflow: 'hidden'});
+        $toolbar.appendTo($panel);
+        $toggle.appendTo($toolbar);
+        $panel.appendTo($wrap);
+        $toggle.on('click', function(e){
+            e.preventDefault();
+            $panel.toggleClass('content-open').hasClass('content-open') ? $toggle.html(viewLessText) : $toggle.html(viewMoreText);
+        });
+        function apply() {
+            $panel.removeClass('applied');
+            ($wrap.innerHeight() > maxHeight)? $panel.addClass('applied') : $panel.removeClass('applied');
+        }
+        apply();
+        $(window).on('resize', apply);
+    }
+    var $desc = $('<?= $descSelector ?>');
+    if ($desc.length && $('.products.wrapper').length) {
+        collapseText($desc, <?= $maxDescHeight ?>, '<span><?= __("More view") ?></span>', '<span><?= __("Less view") ?></span>');
+    }
+});
+</script>         
+<?php } ?>

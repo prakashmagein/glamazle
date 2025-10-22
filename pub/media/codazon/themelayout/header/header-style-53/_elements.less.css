@@ -1,0 +1,33 @@
+@media @tablet_vertical {
+    .page-header{
+        background: @header_background;
+		.sticky-menu:not(.active){
+			margin-top:0;
+			margin-bottom:0;			
+		}
+		.cdz-horizontal-menu .groupmenu li.level0>a.menu-link{
+		    text-transform: capitalize;
+		    padding: 12px 7px;
+		}
+		.features-links>li{
+			padding: 5px;
+		}
+
+	}
+}
+@media @tablet_strict{
+	.page-header{
+		margin-bottom: 0;
+		.logo{
+			margin-top: 8px;
+			img{
+				max-width: 130px;
+			}
+		}
+	}
+}
+@media @phone{
+	.page-header{
+		margin-bottom: 0;
+	}
+}

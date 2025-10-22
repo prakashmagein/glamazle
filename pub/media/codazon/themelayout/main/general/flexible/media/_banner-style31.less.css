@@ -1,0 +1,38 @@
+@space_ver: 30px;
+@space_hor: 22px;
+
+.banner-style31 {
+    .cdz-banner{
+        position: relative;
+		&.rectangle-top-left{
+			padding-inline-start: @space_hor;
+			padding-top: @space_ver;
+			.rectangle {
+				left: 0;
+				top: 0;
+			}
+		}
+		&.rectangle-bottom-left{
+			padding-inline-start: @space_hor;
+			padding-bottom: @space_ver;
+			.rectangle {
+				left: 0;
+				bottom: 0;
+			}
+		}
+		.rectangle {
+            position: absolute;
+			.abs-calc-width(~'(100%' - @space_hor ~')');	
+			height: 40%;
+			background: @main_hover_text;
+        }
+    }
+	.cdz-banner img {
+	    position: relative;
+	    z-index: 1;
+	}
+	
+   @media @tablet_vertical {
+        
+    }
+}

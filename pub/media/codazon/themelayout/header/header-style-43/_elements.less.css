@@ -1,0 +1,98 @@
+@media @tablet_vertical {
+	.page-header {
+		.utilies-toggle-wrap{
+			display: inline-block;
+			.utilies-toggle-btn{
+				position: relative;
+				width: 30px;
+				&:before, &:after {
+					font-size: 0;
+					width: 100%;
+					height: 1px;
+					background: @header_text;
+					content: "";
+					position: absolute;
+					left: 0;
+					top: 10px;
+				}
+				&:after{
+					top: 18px;
+				}
+			}
+		}
+		.title-menu{
+			text-transform: uppercase;
+			font: @menu_font;
+			margin: 0 7px;
+            display: inline;
+		}
+		.account-trigger:before{
+			font-family: CodazonFont;    
+			content: "\E9AA";
+		}
+		.action.showcart:before{
+			content: "\E9A7";
+		}
+		.sticky-menu:not(.active) .header.panel{
+			padding-top: 40px;
+			padding-bottom: 40px;
+			.search-trigger:before{
+				font-size: 22px;
+			}
+			.account-trigger:before{
+				font-size: 26px;
+				margin-top: -3px;
+			} 
+			.action.showcart:before{
+				font-size: 26px;
+			}   
+		}
+        .sticky-menu {
+            max-width: ~'max(var(--cont-max-width), @{screen1400})';
+        }
+        .sticky-menu.active {
+            .features-links > li {
+                padding-block: 0;
+            }
+            .header.panel {
+                background: transparent;
+            }
+            .panel.wrapper {
+                max-width: ~'max(var(--cont-max-width), @{screen1400})';
+            }
+        }
+	}
+}
+/*background transparent*/
+.cms-index-index .page-header {
+    margin-bottom: 0;
+}
+@media @tablet_horizontal {
+    .cms-index-index .page-header{
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        z-index: 7;
+        background: transparent;
+        .header.panel {
+            background: transparent;
+        }
+        .cdz-horizontal-menu .groupmenu li.level0>a.menu-link,
+        .cdz-horizontal-menu .groupmenu{
+            background:transparent;
+        }
+    }
+    .cms-index-index .sticky-menu:not(.active) .header-search {
+        background: @header_search_background;
+        padding: 10px;
+        box-shadow: 2px 4px 7px 0px rgba(204,204,204,.62);
+    }
+}
+
+@media @phone {
+	.page-header{
+		border: none;
+		margin:0;
+	}
+}

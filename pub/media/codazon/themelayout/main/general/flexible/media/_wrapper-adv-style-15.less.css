@@ -1,0 +1,32 @@
+/*Camera Category*/
+.wrapper-adv-style-15{
+	.item{
+		position: relative; 
+		text-align: center;					
+		&:hover{						
+			.item-image {
+				transform: translateY(-15px);
+			}	
+			.item-title{
+				text-decoration: none;
+				color:@main_hover_text;
+			}	
+		}	
+	}
+	.item-image {
+	    display: inline-block;
+	    .abs-transition();
+		margin-bottom: 10px;
+	}
+	.item-title{
+		font: @f_h2;
+		color: @main_productname_text;
+		margin-bottom: 10px;
+		display: block;
+	}
+}
+@media @phone{
+	.wrapper-adv-style-01 .owl-dots{
+		display: none;
+	}
+}
