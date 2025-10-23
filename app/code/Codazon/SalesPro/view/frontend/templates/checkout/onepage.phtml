@@ -22,6 +22,7 @@ $enableDiscountCode = (bool)$helper->getConfig('codazon_osc/customization/enable
     <!-- ko template: getTemplate() --><!-- /ko -->
     <script>
         var cdzOscConfig = <?= $helper->getCustomOptionsJson() ?>;
+        window.cdzOscConfig = cdzOscConfig;
         require.config({
             config: {
                 mixins: {
@@ -70,6 +71,20 @@ $enableDiscountCode = (bool)$helper->getConfig('codazon_osc/customization/enable
             cdzOpcConfig.components.checkout.children.sidebar.children.agreements = {};
             cdzOpcConfig.components.checkout.children.sidebar.children.agreements = steps['billing-step'].children.payment.children['payments-list'].children['before-place-order'].children.agreements;
         } catch(err) {
+        }
+        if (cdzOscConfig.removeEstimatedShipping) {
+            try {
+                var summaryComponent = cdzOpcConfig.components.checkout.children.sidebar.children.summary;
+                if (summaryComponent && summaryComponent.children) {
+                    Object.keys(summaryComponent.children).forEach(function (childName) {
+                        var child = summaryComponent.children[childName];
+                        if (child && child.component === 'Magento_Checkout/js/view/summary/shipping') {
+                            delete summaryComponent.children[childName];
+                        }
+                    });
+                }
+            } catch (err) {
+            }
         }
         <?php if ($enableDiscountCode && ((bool)$helper->getConfig('codazon_osc/customization/move_discount_to_summary'))) : ?>
         try {
