@@ -215,7 +215,18 @@
         <move element="utilities.sidebar.left" destination="before.body.end" />
         <move element="utilities.sidebar.right" destination="before.body.end" />
         
-        <block class="Magento\Store\Block\Switcher" name="store-language-currency" template="Magento_Theme::html/store-language-currency.phtml" />
+        <block class="Codazon\ThemeLayoutPro\Block\Html\StoreLanguageCurrency" name="store-language-currency" template="Magento_Theme::html/store-language-currency.phtml">
+            <block class="Magento\Store\Block\Switcher" name="store-language-switcher" as="language_switcher" template="Magento_Store::switch/languages.phtml">
+                <arguments>
+                    <argument name="id_modifier" xsi:type="string">header-language</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Directory\Block\Currency" name="store-currency-switcher" as="currency_switcher" template="Magento_Directory::currency.phtml">
+                <arguments>
+                    <argument name="id_modifier" xsi:type="string">header-currency</argument>
+                </arguments>
+            </block>
+        </block>
         
         <referenceContainer name="header.container">
             <container name="header-container-inner" htmlTag="div" htmlClass="container sticky-menu js-sticky-menu" before="mobi-search-container" />
