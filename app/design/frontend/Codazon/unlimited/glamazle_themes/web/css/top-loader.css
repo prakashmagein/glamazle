@@ -1,0 +1,115 @@
+/* ===== Top Loader (base) ===== */
+#top-loader{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  z-index: 2147483647;           /* above everything */
+  pointer-events: none;
+  background: rgba(224,224,224,.4);
+  opacity: 0;
+  transition: opacity .25s ease; /* non-iOS fade */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+#top-loader.show{ opacity: 1; }
+#top-loader.hidden{ opacity: 0; }
+
+/* Single child bar (your markup) */
+#top-loader .loader-bar{
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  width: 100%;
+  /* Stronger blue for better contrast */
+  background: linear-gradient(90deg, #0033cc, #0052ff, #0033cc);
+  background-size: 200% 100%;
+  /* Thicker, deeper glow to pop over white */
+  box-shadow: 0 0 12px rgba(0, 51, 204, 0.7), 0 0 4px rgba(0, 51, 204, 0.5);
+}
+
+/* ===== Non-iOS lane: JS drives width (%) ===== */
+#top-loader.width-mode .loader-bar{
+  width: 0%;
+  transition: width .22s linear;
+  will-change: width;
+}
+
+/* ===== iOS lane: pure CSS keyframes on transform ===== */
+#top-loader.ios{
+  /* avoid parent opacity transition racing child keyframes on iOS */
+  transition: none !important;
+}
+#top-loader.ios .loader-bar{
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transform: translateZ(0) scaleX(0.001);
+  transform: translateZ(0) scaleX(0.001);
+  will-change: transform;
+}
+
+/* iOS-safe: use longhand animation so var(--dur) is honored */
+#top-loader .loader-bar{
+  position:absolute; left:0; top:0;
+  height:100%; width:100%;
+  background: linear-gradient(90deg, #2E7EF7, #74B0FF, #2E7EF7); /* lighter blues */
+  background-size: 200% 100%;
+  box-shadow: 0 0 10px rgba(46,126,247,.45), 0 0 3px rgba(46,126,247,.35); /* softer glow */
+}
+
+/* Grow keyframes */
+@-webkit-keyframes smart-grow{
+  from{ -webkit-transform: translateZ(0) scaleX(0.001); transform: translateZ(0) scaleX(0.001); }
+  to  { -webkit-transform: translateZ(0) scaleX(1);     transform: translateZ(0) scaleX(1); }
+}
+@keyframes smart-grow{
+  from{ -webkit-transform: translateZ(0) scaleX(0.001); transform: translateZ(0) scaleX(0.001); }
+  to  { -webkit-transform: translateZ(0) scaleX(1);     transform: translateZ(0) scaleX(1); }
+}
+
+/* ===== Hold-at-100 shimmer (optional) ===== */
+#top-loader.hold-100 .loader-bar::after{
+  content:"";
+  position:absolute; inset:0; pointer-events:none;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.6) 50%, rgba(255,255,255,0) 100%);
+  animation: smart-shimmer 1.1s linear infinite;
+  mix-blend-mode: screen;
+}
+@keyframes smart-shimmer{
+  0%{ transform: translateX(-100%); }
+  100%{ transform: translateX(100%); }
+}
+
+/* ===== Indeterminate fallback (if you toggle .indeterminate) ===== */
+#top-loader .loader-bar.indeterminate{
+  width: 100% !important;
+  animation: loading 1s linear infinite !important;
+  transition: none !important;
+}
+@keyframes loading{
+  0% { background-position: 200% 0; }
+  100%{ background-position: -200% 0; }
+}
+
+/* ===== JS “freeze” mode: JS fully controls width ===== */
+#top-loader .loader-bar.freeze{
+  animation: none !important;
+  transition: width .1s ease-out;
+}
+
+/* ===== Accessibility: reduce motion without breaking progress ===== */
+@media (prefers-reduced-motion: reduce){
+  /* keep progress animation; just mute shimmer / flashy gradient loop */
+  #top-loader.hold-100 .loader-bar::after{ animation: none !important; }
+  #top-loader .loader-bar.indeterminate{ animation: none !important; }
+  /* optional: shorten iOS duration under reduced motion */
+  #top-loader.ios.run .loader-bar{
+    -webkit-animation-duration: calc(var(--dur) * 0.6);
+    animation-duration: calc(var(--dur) * 0.6);
+  }
+}
+@media (prefers-color-scheme: light){
+  #top-loader .loader-bar{
+    background: linear-gradient(90deg, #5A9BFF, #9CC4FF, #5A9BFF);
+    box-shadow: 0 0 8px rgba(90,155,255,.35), 0 0 2px rgba(90,155,255,.28);
+  }
+}
