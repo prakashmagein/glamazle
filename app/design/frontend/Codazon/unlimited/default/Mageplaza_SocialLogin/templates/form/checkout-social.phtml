@@ -4,20 +4,22 @@
  * See COPYING.txt for license details.
  */
 ?>
-<?php
-$availableSocials = $block->getAvailableSocials();
-$displayButtons = $this->helper(\Codazon\ThemeLayoutPro\Helper\Data::class)->getConfig('checkout/general/display_social_login_buttons');
-$isLoggedIn = \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Customer\Model\Session::class)->isLoggedIn();
-?>
-<?php if ($block->canShow() && sizeof($availableSocials) && $displayButtons && (!$isLoggedIn)) : ?>
+<?php /** @var \Mageplaza\SocialLogin\Block\Popup\Social $block */ ?>
+<?php $viewModel = $block->getViewModel(); ?>
+<?php if ($viewModel && $viewModel->shouldRender($block)) :
+    $availableSocials = $viewModel->getPreparedSocials($block);
+    ?>
     <div class="block social-login-authentication-channel account-social-login">
         <div class="block-content">
-            <?php foreach ($availableSocials as $key => $social) : ?>
-                <div class="actions-toolbar social-btn social-btn-actions-toolbar <?= $key ?>-login">
-                    <a class="btn btn-block btn-social btn-<?= $block->getBtnKey($key) ?>"
-                       data-mage-init='{"socialProvider": {"url": "<?= $social['login_url'] ?>", "label": "<?= __('Login By %1', $social['label']) ?>"}}'>
-                        <span class="fa fa-<?= $block->getBtnKey($key) ?>"></span>
-                        <?= __('Sign in with %1', $social['label']) ?>
+            <?php foreach ($availableSocials as $key => $social) :
+                $buttonKey = $block->getBtnKey($key);
+                $loginLabel = __('Login By %1', $social['label']);
+                ?>
+                <div class="actions-toolbar social-btn social-btn-actions-toolbar <?= $block->escapeHtmlAttr($key) ?>-login">
+                    <a class="btn btn-block btn-social btn-<?= $block->escapeHtmlAttr($buttonKey) ?>"
+                       data-mage-init='{"socialProvider": {"url": "<?= $block->escapeUrl($social['login_url']) ?>", "label": "<?= $block->escapeHtmlAttr($loginLabel) ?>"}}'>
+                        <span class="fa fa-<?= $block->escapeHtmlAttr($buttonKey) ?>"></span>
+                        <?= $block->escapeHtml(__('Sign in with %1', $social['label'])) ?>
                     </a>
                 </div>
             <?php endforeach; ?>
