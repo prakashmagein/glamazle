@@ -6,23 +6,57 @@ define([
     'jquery',
     'escaper',
     'uiComponent',
-    'Magento_Customer/js/model/authentication-popup',
     'Magento_Customer/js/customer-data',
     'Magento_Checkout/js/model/quote',
     'Magento_Checkout/js/action/get-totals',
-    'Magento_Checkout/js/model/shipping-service',
-    'Magento_Checkout/js/model/shipping-rate-registry',
-    'Magento_Checkout/js/model/resource-url-manager',
-    'mage/storage',
-    'Magento_Checkout/js/model/error-processor',
     'mage/url',
     'Magento_Ui/js/modal/alert',
-    'Magento_Ui/js/modal/confirm',
     'underscore',
     'uiRegistry',
     'mage/cookies'
-], function($, escaper, Component, authenticationPopup, customerData, quote, getTotalsAction, shippingService, rateRegistry, resourceUrlManager, storage, errorProcessor, url, alert, confirm, _, uiRegistry) {
+], function($, escaper, Component, customerData, quote, getTotalsAction, url, alert, _, uiRegistry) {
     'use strict';
+
+    var estimationDepsPromise;
+
+    function isEstimatedShippingEnabled() {
+        return !(window.cdzOscConfig && window.cdzOscConfig.removeEstimatedShipping === true);
+    }
+
+    function loadEstimationDependencies() {
+        if (estimationDepsPromise) {
+            return estimationDepsPromise;
+        }
+
+        var deferred = $.Deferred();
+
+        if (!isEstimatedShippingEnabled()) {
+            deferred.resolve(null);
+            estimationDepsPromise = deferred.promise();
+            return estimationDepsPromise;
+        }
+
+        require([
+            'Magento_Checkout/js/model/shipping-service',
+            'Magento_Checkout/js/model/shipping-rate-registry',
+            'Magento_Checkout/js/model/resource-url-manager',
+            'mage/storage',
+            'Magento_Checkout/js/model/error-processor'
+        ], function(shippingService, rateRegistry, resourceUrlManager, storage, errorProcessor) {
+            deferred.resolve({
+                shippingService: shippingService,
+                rateRegistry: rateRegistry,
+                resourceUrlManager: resourceUrlManager,
+                storage: storage,
+                errorProcessor: errorProcessor
+            });
+        });
+
+        estimationDepsPromise = deferred.promise();
+
+        return estimationDepsPromise;
+    }
+
     return function(Component) {
         return Component.extend({
             shoppingCartUrl: window.checkout.shoppingCartUrl,
@@ -38,7 +72,7 @@ define([
                     if (cartItems) {
                         cartItems.getItemsQty = function() {
                             return parseFloat(quote.totals().items_qty);
-                        }
+                        };
                     }
                     $('.page-header a.action.showcart').css('pointer-events','none');
                     $('#desk_cart-wrapper, #mobi_cart-wrapper').on('click', function() {
@@ -93,7 +127,11 @@ define([
                 var sections = ['cart'];
                 customerData.invalidate(sections);
                 customerData.reload(sections, true);
-                this._estimateTotalsAndUpdateRatesCheckout();
+                loadEstimationDependencies().done(function(deps) {
+                    if (deps) {
+                        this._estimateTotalsAndUpdateRatesCheckout(deps);
+                    }
+                }.bind(this));
             },
             _ajax: function(url, data, $qty, callback) {
                 var self = this;
@@ -144,8 +182,17 @@ define([
                 }
                 this._customerData();
             },
-            _estimateTotalsAndUpdateRatesCheckout: function() {
-                var serviceUrl, payload = {address:{}}, address = quote.shippingAddress();
+            _estimateTotalsAndUpdateRatesCheckout: function(deps) {
+                if (!deps) {
+                    return;
+                }
+
+                var shippingService = deps.shippingService,
+                    rateRegistry = deps.rateRegistry,
+                    resourceUrlManager = deps.resourceUrlManager,
+                    storage = deps.storage,
+                    errorProcessor = deps.errorProcessor,
+                    serviceUrl, payload = {address:{}}, address = quote.shippingAddress();
                 shippingService.isLoading(true);
                 serviceUrl = resourceUrlManager.getUrlForEstimationShippingMethodsForNewAddress(quote);
                 function camelToUnderscore(key) {
@@ -173,5 +220,5 @@ define([
                 });
             }
         });
-    }
+    };
 });

@@ -14,7 +14,7 @@ var config = {
     shim: {
         "js/owl.carousel.min": ['jquery']
     },
-	deps: [
-        'js/themecore'
+    deps: [
+        'js/themecore-bootstrap'
     ]
 };
