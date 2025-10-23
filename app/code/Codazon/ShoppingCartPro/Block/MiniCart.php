@@ -17,6 +17,7 @@ use Magento\Quote\Model\Quote as QuoteEntity;
 class MiniCart extends Template implements IdentityInterface
 {
     private const CACHE_LIFETIME = 600;
+    public const CACHE_TAG = 'CODAZON_MINICARTPRO_MINICART';
 
     /**
      * @var ShoppingCartHelper
@@ -67,10 +68,11 @@ class MiniCart extends Template implements IdentityInterface
     public function getIdentities(): array
     {
         $quoteId = $this->getQuoteId();
-        $identities = [QuoteEntity::CACHE_TAG];
+        $identities = [self::CACHE_TAG];
 
         if ($quoteId) {
-            $identities[] = QuoteEntity::CACHE_TAG . '_' . $quoteId;
+            $identities[] = self::CACHE_TAG . '_' . $quoteId;
+            $identities[] = 'quote_' . $quoteId;
         }
 
         return $identities;
